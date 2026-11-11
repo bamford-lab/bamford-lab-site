@@ -7,7 +7,7 @@ photo: "/assets/people/connor.jpg"
 projectLabel: Role
 projectTitle: Lecturer in Virology, School of Biological Sciences and the Institute for Global Food Security, QUB.
 funders: ""
-start: "Founded the lab in 2023."
+start: ""
 outside: "Time with my family, especially my wife, our two young children, and the cat."
 links:
   - label: "QUB staff profile"
