@@ -1,6 +1,6 @@
 ---
 name: Emer McCann
-role: Research Fellow
+role: Postdoctoral Research Fellow
 order: 2
 initials: EM
 photo: ""
