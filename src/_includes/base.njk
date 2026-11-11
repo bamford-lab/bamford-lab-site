@@ -59,6 +59,8 @@
                 <a href="/#join" class="nav-cta">Join us</a>
             </div>
         </div>
+        <!-- Reading progress for the page, drawn along the foot of the bar. -->
+        <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
     </nav>
 
     {{ content | safe }}
@@ -78,7 +80,21 @@
 
     <script>
         const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+        const navProgress = document.getElementById('navProgress');
+        function onScroll() {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+            if (navProgress) {
+                // How far through the page we are, 0 to 1. The denominator is the
+                // scrollable distance, not the document height, so it reaches exactly
+                // 100% at the bottom on both a short page and a long one.
+                const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = scrollable > 40 ? (window.scrollY / scrollable) * 100 : 0;
+                navProgress.style.width = Math.min(100, Math.max(0, pct)) + '%';
+            }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        onScroll();
 
         const toggle = document.getElementById('navToggle');
         const links = document.getElementById('navLinks');

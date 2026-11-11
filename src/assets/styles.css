@@ -39,7 +39,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+html { scroll-behavior: smooth; scroll-padding-top: 112px; }
 
 body {
     font-family: 'Literata', Georgia, 'Times New Roman', serif;
@@ -109,7 +109,7 @@ a:hover { color: var(--accent); }
 /* Nav. Scoped to #nav: a bare `nav {}` here would capture any other <nav> on a page. */
 nav#nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: linear-gradient(to bottom, rgba(255,253,253,0.92), rgba(243,236,236,0.88));
+    background: linear-gradient(to bottom, rgba(255,254,254,0.94), rgba(240,232,233,0.90));
     backdrop-filter: blur(12px) saturate(1.15);
     border-bottom: 0;
     transition: background 0.3s, box-shadow 0.3s;
@@ -117,7 +117,25 @@ nav#nav {
 /* Brand strip along the very top of the page. */
 nav#nav::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--accent-dark) 0%, var(--accent) 38%, var(--coral) 72%, var(--accent) 100%);
+    background: linear-gradient(90deg,
+        var(--accent-dark) 0%, var(--accent) 18%, var(--coral) 34%, var(--accent) 50%,
+        var(--accent-dark) 66%, var(--accent) 82%, var(--coral) 100%);
+    background-size: 200% 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+    nav#nav::before { animation: strip-drift 18s linear infinite; }
+}
+@keyframes strip-drift { from { background-position: 0 0; } to { background-position: -200% 0; } }
+
+/* Reading progress along the foot of the bar. It is the one piece of motion that
+   responds to the reader rather than running on a timer. */
+.nav-progress {
+    position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
+    background: linear-gradient(90deg, var(--accent-dark), var(--accent) 55%, var(--coral));
+    box-shadow: 0 0 10px rgba(224,138,60,0.55);
+    border-radius: 0 2px 2px 0;
+    transition: width 0.12s linear;
+    pointer-events: none; z-index: 2;
 }
 /* Hairline under the bar that fades out at both ends, so it reads as a drawn line
    rather than a border that stops dead at the window edge. */
@@ -131,7 +149,7 @@ nav#nav.scrolled {
 }
 nav#nav .container {
     display: flex; align-items: center; justify-content: space-between;
-    height: 74px;
+    height: 92px;
 }
 nav#nav .brand { display: flex; align-items: center; }
 /* The real wordmark, tagline removed (see logo-wordmark.svg). The tagline would render
@@ -142,7 +160,7 @@ nav#nav .brand { display: flex; align-items: center; }
    whole 96KB logo into every page. transform-origin is the virus's own centre, measured
    by the build script, so it turns on the spot rather than orbiting the image centre. */
 nav#nav .brand .brand-logo {
-    position: relative; display: block; height: 54px;
+    position: relative; display: block; height: 64px;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 nav#nav .brand .brand-logo img { height: 100%; width: auto; display: block; }
@@ -154,20 +172,20 @@ nav#nav .brand .brand-virus {
 nav#nav .brand:hover .brand-logo { transform: scale(1.03); }
 nav#nav .brand:hover .brand-virus { transform: rotate(90deg); }
 
-nav#nav .links { display: flex; gap: 1.1rem; align-items: center; }
+nav#nav .links { display: flex; gap: 1.25rem; align-items: center; }
 nav#nav .links a.nav-link {
     position: relative; padding: 0.45rem 0;
     color: #2a1f22; font-size: 0.93rem; font-weight: 500;
     letter-spacing: 0.005em; transition: color 0.2s;
 }
 nav#nav .links a.nav-link::after {
-    content: ''; position: absolute; left: 0.6rem; right: 0.6rem; bottom: 0.1rem; height: 2px;
+    content: ''; position: absolute; left: 0.7rem; right: 0.7rem; bottom: 0.18rem; height: 2px;
     background: var(--accent); border-radius: 4px;
     transform: scaleX(0); transform-origin: center;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 nav#nav .links a.nav-link {
-    padding: 0.45rem 0.6rem; border-radius: 8px;
+    padding: 0.6rem 0.7rem; border-radius: 8px;
     transition: color 0.2s, background 0.2s;
 }
 nav#nav .links a.nav-link:hover { color: var(--accent); background: rgba(180,31,53,0.07); }
@@ -833,8 +851,8 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
     .nav-toggle { display: block; }
     nav#nav .links.open {
         display: flex; flex-direction: column; align-items: flex-start;
-        position: absolute; top: 74px; left: 0; right: 0;
+        position: absolute; top: 92px; left: 0; right: 0;
         background: rgba(251, 251, 250, 0.98); border-bottom: 1px solid #e4d7d9; padding: 1rem 1.5rem; gap: 1rem;
     }
-    nav#nav .brand .brand-logo { height: 42px; }
+    nav#nav .brand .brand-logo { height: 48px; }
 }
