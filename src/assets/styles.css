@@ -221,6 +221,7 @@ nav#nav .links a.nav-cta:hover {
         linear-gradient(150deg, #a01b30 0%, #7d1426 45%, #3a0d17 100%);
     border: 0; color: #fff;
     border-radius: 14px; padding: 1.8rem;
+    position: relative; overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 .theme-card:hover, .theme-card.reveal.in:hover { transform: translateY(-4px); box-shadow: 0 22px 46px -22px rgba(24,10,14,0.6); }
@@ -231,6 +232,16 @@ nav#nav .links a.nav-cta:hover {
 }
 .theme-card p { font-size: 0.99rem; color: rgba(255,255,255,0.88); }
 a.theme-card { display: flex; flex-direction: column; text-decoration: none; }
+.theme-card > :not(.pillar-canvas) { position: relative; z-index: 1; }
+/* The particle field sits back at rest and sharpens on hover, so a card the cursor is
+   on reads as the active one. */
+.theme-card .pillar-canvas, .pillar-card .pillar-canvas {
+    opacity: 0.55; filter: blur(1.1px);
+    transition: opacity 0.35s ease, filter 0.35s ease;
+}
+.theme-card:hover .pillar-canvas, .pillar-card:hover .pillar-canvas {
+    opacity: 1; filter: none;
+}
 a.theme-card p { flex: 1; }
 .theme-card .card-more {
     display: block; margin-top: 1.1rem; font-size: 0.88rem;
@@ -275,6 +286,8 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
     position: relative; overflow: hidden; color: #fff;
 }
 .pillar-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.pillar-card { transition: transform 0.2s, box-shadow 0.2s; }
+.pillar-card:hover { transform: translateY(-3px); box-shadow: 0 26px 56px -34px rgba(24,10,14,0.75); }
 .pillar-card > :not(.pillar-canvas) { position: relative; z-index: 1; }
 .pillar-card-head { margin-bottom: 1.1rem; }
 .pillar-card-head h2 {
@@ -458,13 +471,13 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 .pub .meta .venue { font-size: 0.88rem; color: var(--text-dim); font-style: italic; margin-top: 0.15rem; }
 
 /* Equality, diversity and inclusion */
-.edi-copy { max-width: 760px; }
+.edi-copy { max-width: none; }
 .edi-copy p { color: var(--text-dim); margin-bottom: 1.1rem; line-height: 1.8; }
 .edi-copy a { color: var(--accent); font-weight: 500; }
 .edi-copy a:hover { color: var(--accent-dark); text-decoration: underline; }
 .edi-foot {
     margin-top: 2.5rem; padding-top: 1.4rem; border-top: 1px solid var(--border);
-    font-size: 0.95rem; color: var(--text-dim); max-width: 84ch;
+    font-size: 0.95rem; color: var(--text-dim);
     display: flex; align-items: center; gap: 1.6rem;
 }
 .edi-foot p { margin: 0; }

@@ -36,6 +36,7 @@ title: Bamford Lab | Antiviral Immunity | Queen's University Belfast
             <div class="grid grid-4">
                 {% for r in research.pillars %}
                 <a class="theme-card reveal" href="/research/#{{ r.slug }}">
+                    <canvas class="pillar-canvas" aria-hidden="true"></canvas>
                     <h3>{{ r.title | safe }}</h3>
                     <p>{{ r.blurb }}</p>
                     <span class="card-more">Read more &rarr;</span>
@@ -132,7 +133,7 @@ title: Bamford Lab | Antiviral Immunity | Queen's University Belfast
     <!-- JOIN / CONTACT -->
     <section class="section join" id="join">
         <div class="container">
-            <div class="section-head reveal" style="max-width:720px;">
+            <div class="section-head section-head-wide reveal">
                 <h2>Come and do a PhD, project or postdoc with us</h2>
                 <p class="lead">We welcome curious, motivated people at every stage. If our questions excite you, get in touch, even just to chat about possibilities.</p>
             </div>
