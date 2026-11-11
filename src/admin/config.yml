@@ -4,7 +4,12 @@
 #
 # Domain set 11 Nov 2026: bamfordlab.org (Cloudflare Registrar).
 #   backend.repo must match the real GitHub owner/repository.
-#   backend.base_url is the deployed sveltia-cms-auth worker.
+#
+# AUTH: there is deliberately NO `base_url` here. Without it, the login screen
+# offers "Sign In with Token": you paste a GitHub personal access token and that
+# is the whole login. No OAuth app and no auth worker are needed while the
+# editors are technical users. If non-technical lab members ever need to log in,
+# deploy sveltia-cms-auth and add base_url back (see DEPLOY.md step 5).
 # See DEPLOY.md for the full walkthrough.
 # ==========================================================================
 
@@ -12,7 +17,6 @@ backend:
   name: github
   repo: bamford-lab/bamford-lab-site
   branch: main
-  base_url: https://auth.bamfordlab.org   # the sveltia-cms-auth worker (step 5 of DEPLOY.md)
 
 # Where uploaded images are stored in the repo, and how the site references them
 media_folder: "src/assets/uploads"

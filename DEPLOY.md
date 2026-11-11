@@ -86,7 +86,22 @@ The CMS saves edits by committing to your repo, so it needs permission to log in
 
 ---
 
-## 5. Deploy the auth worker and finish the CMS
+## 5. CMS login
+
+**Sole technical admin (the current setup): nothing to deploy.** `src/admin/config.yml`
+has no `base_url`, so <https://bamfordlab.org/admin/> shows a **Sign In with Token**
+button. Create a GitHub personal access token (fine-grained: repository
+`bamford-lab/bamford-lab-site`, **Contents: Read and write**; or a classic token with
+the `repo` scope), paste it in, and you are editing. The token is kept in that
+browser's local storage, so each browser needs it once.
+
+Only do the OAuth-app-and-worker dance below if NON-TECHNICAL lab members need to log
+in without handling tokens themselves.
+
+<details>
+<summary>Optional: auth worker for non-technical editors</summary>
+
+## 5b. Deploy the auth worker and finish the CMS
 
 Sveltia CMS needs a tiny auth handler. Use the ready-made one:
 
@@ -111,7 +126,9 @@ Sveltia CMS needs a tiny auth handler. Use the ready-made one:
    ```
 5. Commit and push. Now visit **`https://bamfordlab.org/admin/`**, click **Login with GitHub**, and you are in.
 
-Anyone you add as a **collaborator on the GitHub repo** can log in and edit.
+Anyone you add as a **collaborator on the GitHub repo** can then log in and edit.
+
+</details>
 
 ---
 
