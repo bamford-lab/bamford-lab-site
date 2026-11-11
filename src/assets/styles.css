@@ -336,6 +336,11 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 /* How it fits together. The right-hand CTA card was removed on 11 Nov 2026: it only
    repeated the People and Publications links that sit in the nav on every page, and
    existed mainly to fill the second column. */
+/* Full-width intro copy, stacked. Used where the two paragraphs are too different in
+   length to sit side by side. */
+.page-intro p { color: var(--text-dim); line-height: 1.82; margin-bottom: 1.1rem; }
+.page-intro p:last-child { margin-bottom: 0; }
+
 /* Two paragraphs side by side: fills the width of the pillar grid above without
    stretching either one to an unreadable line length. */
 .together-copy {
