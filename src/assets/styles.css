@@ -75,8 +75,19 @@ a:hover { color: var(--accent); }
 .container { max-width: 1320px; margin: 0 auto; padding: 0 1.5rem; }
 .section { padding: 6rem 0; position: relative; }
 /* The alternating band is a crimson wash LIFTED off the plum. At the light theme's
-   3.5% it was invisible on a dark page. */
-.section-alt { background: rgba(180, 31, 53, 0.09); }
+   3.5% it was invisible on a dark page.
+   It is a GRADIENT, not a flat fill: a flat fill met the next section at a hard ruled
+   line that read as an accident. Fixed 140px ramps (not percentages, which would scale
+   with the section and fade a short band away entirely) give a soft, deliberate join. */
+.section-alt {
+    background: linear-gradient(
+        to bottom,
+        rgba(180, 31, 53, 0) 0,
+        rgba(180, 31, 53, 0.09) 140px,
+        rgba(180, 31, 53, 0.09) calc(100% - 140px),
+        rgba(180, 31, 53, 0) 100%
+    );
+}
 
 /* Full-page particle background (behind content, shows through light sections) */
 #bg-canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
@@ -98,15 +109,15 @@ a:hover { color: var(--accent); }
 /* Nav. Scoped to #nav: a bare `nav {}` here would capture any other <nav> on a page. */
 nav#nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(24, 10, 14, 0.72);
+    background: rgba(251, 251, 250, 0.86);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s, background 0.3s;
 }
 nav#nav.scrolled {
-    background: rgba(24, 10, 14, 0.94);
-    border-bottom-color: var(--border);
-    box-shadow: 0 6px 28px -18px rgba(0,0,0,0.8);
+    background: rgba(251, 251, 250, 0.96);
+    border-bottom-color: #e4d7d9;
+    box-shadow: 0 10px 34px -18px rgba(0,0,0,0.75);
 }
 nav#nav .container {
     display: flex; align-items: center; justify-content: space-between;
@@ -136,7 +147,7 @@ nav#nav .brand:hover .brand-virus { transform: rotate(90deg); }
 nav#nav .links { display: flex; gap: 1.9rem; align-items: center; }
 nav#nav .links a.nav-link {
     position: relative; padding: 0.45rem 0;
-    color: var(--text); font-size: 0.93rem; font-weight: 500;
+    color: #2a1f22; font-size: 0.93rem; font-weight: 500;
     letter-spacing: 0.005em; transition: color 0.2s;
 }
 nav#nav .links a.nav-link::after {
@@ -148,7 +159,7 @@ nav#nav .links a.nav-link::after {
 nav#nav .links a.nav-link:hover { color: var(--accent); }
 nav#nav .links a.nav-link:hover::after,
 nav#nav .links a.nav-link.active::after { transform: scaleX(1); }
-nav#nav .links a.nav-link.active { color: var(--accent-dark); font-weight: 600; }
+nav#nav .links a.nav-link.active { color: #8f1728; font-weight: 600; }
 
 nav#nav .links a.nav-cta {
     background: var(--accent); color: #fff; padding: 0.58rem 1.25rem;
@@ -160,7 +171,7 @@ nav#nav .links a.nav-cta:hover {
     background: var(--accent-bright); color: #fff;
     transform: translateY(-1px); box-shadow: 0 10px 24px -8px rgba(180,31,53,0.85);
 }
-.nav-toggle { display: none; background: none; border: 0; cursor: pointer; color: var(--heading); }
+.nav-toggle { display: none; background: none; border: 0; cursor: pointer; color: #1c1114; }
 
 /* Hero (dark) */
 .hero {
@@ -174,6 +185,14 @@ nav#nav .links a.nav-cta:hover {
     padding: 7rem 0 5rem;
 }
 #hero-canvas { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+/* Fades the hero (background AND particle field) into the page beneath it. Sits at
+   z-index 1, above the canvas but below .hero .container at z-index 2, so it never
+   touches the copy. */
+.hero::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 170px;
+    z-index: 1; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(24,10,14,0), var(--bg));
+}
 .hero .container { position: relative; z-index: 2; }
 .hero .hero-container { max-width: 1400px; width: 100%; }
 .hero .hero-grid {
@@ -218,8 +237,11 @@ nav#nav .links a.nav-cta:hover {
 }
 .btn-primary { background: var(--accent); color: #fff; }
 .btn-primary:hover { background: var(--accent-bright); color: #fff; box-shadow: 0 8px 24px -8px var(--glow); transform: translateY(-1px); }
-.btn-ghost { background: transparent; color: var(--dark-text); border-color: rgba(255,255,255,0.18); }
-.btn-ghost:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); color: #fff; }
+.btn-ghost { background: #fff; color: var(--accent); border-color: #fff; }
+.btn-ghost:hover {
+    background: #fff; color: var(--accent-dark); border-color: #fff;
+    transform: translateY(-1px); box-shadow: 0 10px 26px -10px rgba(0,0,0,0.65);
+}
 .btn-outline { background: rgba(255,255,255,0.05); color: var(--heading); border-color: var(--border-strong); }
 .btn-outline:hover { background: rgba(255,255,255,0.09); }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
@@ -247,12 +269,24 @@ nav#nav .links a.nav-cta:hover {
         radial-gradient(ellipse 70% 55% at 85% 10%, rgba(232,85,106,0.35), transparent 60%),
         radial-gradient(ellipse 60% 50% at 10% 100%, rgba(224,138,60,0.18), transparent 60%),
         linear-gradient(150deg, #a01b30 0%, #7d1426 45%, #3a0d17 100%);
-    border: 0; color: #fff;
+    border: 1px solid rgba(255, 196, 206, 0.40); color: #fff;
     border-radius: 14px; padding: 1.8rem;
     position: relative; overflow: hidden;
+    /* inset highlight along the top edge + a crimson halo holding the card off the page */
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        0 0 0 1px rgba(0,0,0,0.35),
+        0 18px 44px -26px rgba(180,31,53,0.75);
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
-.theme-card:hover, .theme-card.reveal.in:hover { transform: translateY(-4px); box-shadow: 0 22px 46px -22px rgba(24,10,14,0.6); }
+.theme-card:hover, .theme-card.reveal.in:hover {
+    transform: translateY(-4px);
+    border-color: rgba(233,162,74,0.75);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.3),
+        0 0 0 1px rgba(0,0,0,0.35),
+        0 26px 54px -24px rgba(180,31,53,0.95);
+}
 .theme-card h3 { font-size: 1.22rem; font-weight: 600; color: #fff; margin-bottom: 0.6rem; }
 .theme-card h3::after {
     content: ''; display: block; width: 34px; height: 2px; border-radius: 4px;
@@ -308,14 +342,25 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
         radial-gradient(ellipse 60% 50% at 10% 100%, rgba(224,138,60,0.18), transparent 60%),
         linear-gradient(150deg, #a01b30 0%, #7d1426 45%, #3a0d17 100%);
     border-radius: 14px; padding: 2rem 2.1rem 1.8rem;
-    box-shadow: 0 26px 60px -40px rgba(24,10,14,0.7);
+    border: 1px solid rgba(255, 196, 206, 0.40);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        0 0 0 1px rgba(0,0,0,0.35),
+        0 18px 44px -26px rgba(180,31,53,0.75);
     scroll-margin-top: 96px;
     display: flex; flex-direction: column;
     position: relative; overflow: hidden; color: #fff;
 }
 .pillar-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .pillar-card { transition: transform 0.2s, box-shadow 0.2s; }
-.pillar-card:hover { transform: translateY(-3px); box-shadow: 0 26px 56px -34px rgba(24,10,14,0.75); }
+.pillar-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(233,162,74,0.75);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.3),
+        0 0 0 1px rgba(0,0,0,0.35),
+        0 26px 54px -24px rgba(180,31,53,0.95);
+}
 .pillar-card > :not(.pillar-canvas) { position: relative; z-index: 1; }
 .pillar-card-head { margin-bottom: 1.1rem; }
 .pillar-card-head h2 {
@@ -680,7 +725,7 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
     nav#nav .links.open {
         display: flex; flex-direction: column; align-items: flex-start;
         position: absolute; top: 74px; left: 0; right: 0;
-        background: var(--bg); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; gap: 1rem;
+        background: rgba(251, 251, 250, 0.98); border-bottom: 1px solid #e4d7d9; padding: 1rem 1.5rem; gap: 1rem;
     }
     nav#nav .brand .brand-logo { height: 42px; }
 }
