@@ -43,8 +43,8 @@
         <div class="container">
             <a href="/" class="brand" aria-label="Bamford Lab">
                 <span class="brand-logo">
-                    <img src="/assets/logo-wordmark-nav.svg" alt="Bamford Lab">
-                    <img src="/assets/logo-wordmark-nav-virus.svg" alt="" class="brand-virus">
+                    <img src="/assets/logo-wordmark-nav-dark.svg" alt="Bamford Lab">
+                    <img src="/assets/logo-wordmark-nav-virus-dark.svg" alt="" class="brand-virus">
                 </span>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -240,17 +240,20 @@
             }
         }));
 
-        // Light full-page background: subtle deep red
+        // Full-page background on the DARK theme. The old values were deep red on
+        // off-white; on plum-black they were invisible, so the field now uses the same
+        // brighter rose and amber as the hero, held back a little so body text stays
+        // the thing you read first.
         initField(document.getElementById('bg-canvas'), {
             fixed: true, link: 128,
             colors: {
-                line: o => 'rgba(143,23,40,' + o * 0.16 + ')',
-                mline: o => 'rgba(180,31,53,' + o * 0.28 + ')',
-                dot: 'rgba(180,31,53,0.42)',
-                ab: 'rgba(143,23,40,0.42)',
-                spike: 'rgba(143,23,40,0.42)',
-                vbody: 'rgba(180,31,53,0.30)',
-                core: 'rgba(143,23,40,0.5)'
+                line: o => 'rgba(232,85,106,' + o * 0.20 + ')',
+                mline: o => 'rgba(240,120,140,' + o * 0.34 + ')',
+                dot: 'rgba(240,120,140,0.55)',
+                ab: 'rgba(232,85,106,0.42)',
+                spike: 'rgba(214,60,82,0.42)',
+                vbody: 'rgba(233,162,74,0.45)',
+                core: null
             }
         });
     </script>
