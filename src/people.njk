@@ -29,22 +29,18 @@ permalink: /people/index.html
             </div>
             <div class="people">
                 {% for person in collections.people %}
-                <div class="person" onclick="this.classList.toggle('open')">
+                {# The card is a LINK, not an expander. It used to toggle the whole bio
+                   open inline, which made one card enormously taller than its neighbours
+                   and left the grid ragged. The full bio lives on the profile page. #}
+                <a href="/people/{{ person.data.name | slugify }}/" class="person">
                     <div class="photo">{% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.name }}">{% else %}{{ person.data.initials }}{% endif %}</div>
                     <div class="info">
                         <div class="name">{{ person.data.name }}</div>
                         <div class="role">{{ person.data.role }}</div>
-                        <div class="bio">{{ person.templateContent | safe }}</div>
-                        {% if person.data.projectTitle %}
-                        <p class="project"><b>{{ person.data.projectLabel or "Project" }}:</b> {{ person.data.projectTitle }}
-                            {% if person.data.funders %}<span class="funders">{{ person.data.funders }}</span>{% endif %}
-                        </p>
-                        {% endif %}
-                        {% if person.data.outside %}<p class="fun"><b>Outside the lab:</b> {{ person.data.outside }}</p>{% endif %}
-                        <a href="/people/{{ person.data.name | slugify }}/" class="profile-link" onclick="event.stopPropagation()">Full profile &rarr;</a>
-                        <div class="expand">Read more</div>
+                        {% if person.data.projectTitle %}<div class="proj">{{ person.data.projectTitle }}</div>{% endif %}
+                        <span class="person-more">View profile &rarr;</span>
                     </div>
-                </div>
+                </a>
                 {% endfor %}
             </div>
         </div>

@@ -354,33 +354,34 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .person {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; overflow: hidden; cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 14px; overflow: hidden; display: block;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
-.person:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -22px rgba(15,30,36,0.3); }
+.person:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -22px rgba(15,30,36,0.3); border-color: var(--border-strong); }
 .person .photo {
     aspect-ratio: 1/1; background: linear-gradient(135deg, #f5dde1, #e9c3ca);
     display: flex; align-items: center; justify-content: center;
     color: var(--accent-dark); font-family: 'Newsreader', serif; font-size: 2.4rem;
 }
 .person .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-.person .info { padding: 1.2rem 1.3rem 1.4rem; }
+.person .info { padding: 1.1rem 1.2rem 1.2rem; }
 .person .info .name { font-weight: 600; color: var(--heading); font-size: 1.08rem; }
 .person .info .role { font-size: 0.85rem; color: var(--accent-dark); font-weight: 500; margin-top: 0.15rem; }
-.person .info .bio { font-size: 0.95rem; color: var(--text-dim); margin-top: 0.8rem; display: none; }
-.person .info .bio p { margin-bottom: 0.6rem; }
-.person .info .project { font-size: 0.9rem; color: var(--text); margin-top: 0.7rem; display: none; }
-.person .info .project b { color: var(--accent-dark); font-weight: 600; }
-.person .info .project .funders { display: block; margin-top: 0.3rem; font-size: 0.8rem; color: var(--text-dim); }
-.person .info .fun { font-size: 0.9rem; color: var(--text); margin-top: 0.7rem; display: none; }
-.person .info .fun b { color: var(--accent-dark); font-weight: 600; }
-.person.open .info .bio, .person.open .info .fun, .person.open .info .project { display: block; }
-.person .info .profile-link { display: none; margin-top: 0.9rem; font-size: 0.82rem; font-weight: 600; color: #fff; background: var(--accent); padding: 0.45rem 0.95rem; border-radius: 14px; }
-.person .info .profile-link:hover { background: var(--accent-dark); color: #fff; }
-.person.open .info .profile-link { display: inline-block; }
-.person .expand { font-size: 0.8rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.8rem; }
-.person.open .expand::after { content: ' \2212'; }
-.person:not(.open) .expand::after { content: ' +'; }
+/* Project title, clamped to three lines so every card in a row stays the same height. */
+.person .info .proj {
+    font-size: 0.88rem; color: var(--text-dim); line-height: 1.5; margin-top: 0.6rem;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.person .info .person-more {
+    display: inline-block; margin-top: 0.8rem; font-family: var(--sans);
+    font-size: 0.82rem; font-weight: 600; color: var(--accent);
+    opacity: 0; transform: translateX(-4px); transition: opacity 0.2s, transform 0.2s;
+}
+.person:hover .person-more, .person:focus-visible .person-more { opacity: 1; transform: none; }
+/* Touch devices have no hover, so always show the cue there. */
+@media (hover: none) {
+    .person .info .person-more { opacity: 1; transform: none; }
+}
 
 /* News */
 .news-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -571,13 +572,17 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
     .join .contact-grid { grid-template-columns: 1fr; }
     .labbio .portrait { max-width: 320px; }
 }
+@media (max-width: 860px) {
+    nav#nav .links { display: none; }
+    .nav-toggle { display: block; }
+}
 @media (max-width: 620px) {
     .section { padding: 4rem 0; }
     .grid-3, .grid-4, .people, .news-list, .alumni-list { grid-template-columns: 1fr; }
     .timeline .item { grid-template-columns: 1fr; gap: 0.4rem; }
-    nav .links { display: none; }
+    nav#nav .links { display: none; }
     .nav-toggle { display: block; }
-    nav .links.open {
+    nav#nav .links.open {
         display: flex; flex-direction: column; align-items: flex-start;
         position: absolute; top: 74px; left: 0; right: 0;
         background: var(--bg); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; gap: 1rem;
