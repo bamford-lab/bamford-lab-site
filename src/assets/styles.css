@@ -209,23 +209,29 @@ nav#nav .links a.nav-cta:hover {
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
 
+/* The home-page teasers carry the SAME crimson as the /research/ pillar cards, so the
+   four pillars look like one thing across both pages. */
 .theme-card {
-    background: var(--card); border: 1px solid var(--border);
+    background-image:
+        radial-gradient(ellipse 70% 55% at 85% 10%, rgba(232,85,106,0.35), transparent 60%),
+        radial-gradient(ellipse 60% 50% at 10% 100%, rgba(224,138,60,0.18), transparent 60%),
+        linear-gradient(150deg, #a01b30 0%, #7d1426 45%, #3a0d17 100%);
+    border: 0; color: #fff;
     border-radius: 14px; padding: 1.8rem;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
-.theme-card:hover, .theme-card.reveal.in:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(15,30,36,0.25); border-color: var(--border-strong); }
-.theme-card h3 { font-size: 1.22rem; font-weight: 600; color: var(--heading); margin-bottom: 0.6rem; }
+.theme-card:hover, .theme-card.reveal.in:hover { transform: translateY(-4px); box-shadow: 0 22px 46px -22px rgba(24,10,14,0.6); }
+.theme-card h3 { font-size: 1.22rem; font-weight: 600; color: #fff; margin-bottom: 0.6rem; }
 .theme-card h3::after {
     content: ''; display: block; width: 34px; height: 2px; border-radius: 4px;
-    background: var(--accent); margin: 0.7rem 0 0.9rem;
+    background: var(--coral); margin: 0.7rem 0 0.9rem;
 }
-.theme-card p { font-size: 0.99rem; color: var(--text-dim); }
+.theme-card p { font-size: 0.99rem; color: rgba(255,255,255,0.88); }
 a.theme-card { display: flex; flex-direction: column; text-decoration: none; }
 a.theme-card p { flex: 1; }
 .theme-card .card-more {
     display: block; margin-top: 1.1rem; font-size: 0.88rem;
-    font-weight: 600; color: var(--accent); opacity: 0; transform: translateX(-4px);
+    font-weight: 600; color: var(--coral); opacity: 0; transform: translateX(-4px);
     transition: opacity 0.2s, transform 0.2s;
 }
 a.theme-card:hover .card-more { opacity: 1; transform: none; }
