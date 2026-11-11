@@ -317,7 +317,10 @@ def main():
     # the deeper #8f1728 for contrast (8.6:1 against the nav band, against 6.3:1), but
     # James found it read as noticeably darker than every other red on the page. 6.3:1
     # still clears WCAG AA comfortably for lettering this size.
-    NAV_RED = "#b41f35"
+    # The NAV wordmark is a shade deeper than the site's --accent (#b41f35). The bar sits
+    # on a pale strip above a dark page, and once the research cards were darkened the
+    # brighter red read as the loudest thing on the screen (James, 11 Nov 2026).
+    NAV_RED = "#a01b30"
     novirus_body = (f'{word}{lab}'
                     f'<g transform="translate({shift:.2f},0)">'
                     f'<path fill-rule="evenodd" d="{icons["receptor"]}"/></g>')
