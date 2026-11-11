@@ -374,12 +374,10 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
     background: linear-gradient(150deg, #a01b30 0%, #7d1426 45%, #3a0d17 100%);
     color: #fff;
 }
-.photo.placeholder::before, .profile-photo.placeholder::before {
-    content: ''; position: absolute; inset: 0;
-    background: url('/assets/virus-white.svg') no-repeat center / 72%;
-    opacity: 0.22;
+.photo.placeholder .ph-canvas, .profile-photo.placeholder .ph-canvas {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
 }
-.photo.placeholder .initials, .profile-photo.placeholder {
+.photo.placeholder .initials, .profile-photo.placeholder .initials {
     position: relative; z-index: 1;
 }
 .photo.placeholder .initials {

@@ -195,6 +195,20 @@
             }
         });
 
+        // Headshot placeholders: the same field, scaled down to a square tile.
+        document.querySelectorAll('.ph-canvas').forEach(c => initField(c, {
+            count: 16, link: 95,
+            colors: {
+                line: o => 'rgba(255,255,255,' + o * 0.2 + ')',
+                mline: o => 'rgba(255,214,220,' + o * 0.45 + ')',
+                dot: 'rgba(255,205,212,0.7)',
+                ab: 'rgba(255,205,212,0.55)',
+                spike: 'rgba(255,205,212,0.5)',
+                vbody: 'rgba(233,162,74,0.8)',
+                core: null
+            }
+        }));
+
         // Research pillar cards: one small field per card, pale on the crimson gradient
         document.querySelectorAll('.pillar-canvas').forEach(c => initField(c, {
             count: 18, link: 120,
