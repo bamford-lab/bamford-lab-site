@@ -10,7 +10,7 @@
 
 backend:
   name: github
-  repo: bamford-lab/bamford-lab-site     # <-- EDIT if your GitHub org/repo differs
+  repo: bamford-lab/bamford-lab-site
   branch: main
   base_url: https://auth.bamfordlab.org   # the sveltia-cms-auth worker (step 5 of DEPLOY.md)
 
