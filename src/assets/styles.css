@@ -308,17 +308,12 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
     width: 5px; height: 5px; border-radius: 50%; background: var(--coral);
 }
 
-/* How it fits together */
-.together-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); gap: 3rem; align-items: start; }
-.together-grid p { color: var(--text-dim); line-height: 1.82; margin-bottom: 1.15rem; }
-.together-cta {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 1.8rem; position: sticky; top: 100px;
-}
-.together-cta h3 { font-size: 1.15rem; color: var(--heading); font-weight: 600; margin-bottom: 0.6rem; }
-.together-cta p { font-size: 0.99rem; margin-bottom: 1.3rem; }
-.together-cta .cta-group { flex-direction: column; align-items: stretch; gap: 0.6rem; }
-.together-cta .btn { justify-content: center; }
+/* How it fits together. The right-hand CTA card was removed on 11 Nov 2026: it only
+   repeated the People and Publications links that sit in the nav on every page, and
+   existed mainly to fill the second column. */
+.together-copy { max-width: 70ch; }
+.together-copy p { color: var(--text-dim); line-height: 1.82; margin-bottom: 1.15rem; }
+.together-copy p:last-child { margin-bottom: 0; }
 
 /* Publications page (grouped by year) */
 .pub-year { margin-bottom: 2.5rem; }
@@ -592,8 +587,6 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
     .research-masthead { grid-template-columns: 1fr; gap: 1.2rem; }
     .research-masthead .lead { margin-top: 0; }
     .pillar-stack { grid-template-columns: 1fr; }
-    .together-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .together-cta { position: static; }
     .join .contact-grid { grid-template-columns: 1fr; }
     .labbio .portrait { max-width: 320px; }
 }
