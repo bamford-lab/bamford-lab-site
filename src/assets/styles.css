@@ -41,6 +41,12 @@ body {
        to stop wherever the content ended, leaving it stranded mid-screen with bare
        background beneath it. `margin-top: auto` on the footer pushes it to the bottom. */
     display: flex; flex-direction: column; min-height: 100vh;
+}
+/* A .container that is a DIRECT child of body is a flex item, and its `margin: 0 auto`
+   makes it shrink to its content instead of stretching. Without this the /research/
+   and /people/ page heads collapsed to the width of their title and sat centred. */
+body > .container {
+    width: 100%;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
