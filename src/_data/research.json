@@ -30,13 +30,13 @@
     {
       "slug": "ai-and-computation",
       "title": "AI and computational biology",
-      "blurb": "Deep learning and evolutionary data to predict how hosts and pathogens interact, and to inform the design of the next generation of antivirals.",
+      "blurb": "Deep learning and evolutionary data to decode immune signalling in infection, inflammation and cancer, and to inform the design of new therapeutics.",
       "lead": "",
       "detail": [
-        "Deep learning is our main computational tool. We use protein language and structure models alongside the evolutionary record across thousands of vertebrate genomes to predict how immune proteins interact, to ask where those models are blind, and to narrow a vast space of possibilities down to the few worth testing at the bench."
+        "Deep learning is our main computational tool. We use protein language and structure models alongside the evolutionary record across thousands of vertebrate genomes to predict how immune signalling proteins interact and to ask where those models are blind. The same residues tend to matter whether a cytokine system is hijacked by a virus, broken by an inherited fault, or subverted by a tumour, so the map we build reaches across infection, inflammation and cancer alike."
       ],
       "questions": [
-        "Can AI inform the design of new antivirals and engineered cytokines?",
+        "Can AI inform the design of new therapeutics, from antivirals to engineered cytokines?",
         "Can we predict host-pathogen interactions, and how they will evolve?",
         "What would an evolution-aware foundation model of immunity look like?"
       ]
