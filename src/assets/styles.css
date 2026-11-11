@@ -288,9 +288,9 @@ nav#nav .links a.nav-cta:hover { background: linear-gradient(170deg, #c7253d 0%,
    four pillars look like one thing across both pages. */
 .theme-card {
     background-image:
-        radial-gradient(ellipse 70% 55% at 85% 10%, rgba(232,85,106,0.35), transparent 60%),
-        radial-gradient(ellipse 60% 50% at 10% 100%, rgba(224,138,60,0.18), transparent 60%),
-        linear-gradient(150deg, #a01b30 0%, #7d1426 45%, #3a0d17 100%);
+        radial-gradient(ellipse 70% 55% at 85% 10%, rgba(232,85,106,0.22), transparent 62%),
+        radial-gradient(ellipse 60% 50% at 10% 100%, rgba(224,138,60,0.12), transparent 62%),
+        linear-gradient(150deg, #6b1322 0%, #4a0e19 48%, #1f070d 100%);
     border: 1px solid rgba(255, 196, 206, 0.40); color: #fff;
     border-radius: 14px; padding: 1.8rem;
     position: relative; overflow: hidden;
@@ -360,9 +360,9 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
     /* Crimson gradient with its own particle field, echoing the home-page hero, so
        the cards stand out against the light page. */
     background-image:
-        radial-gradient(ellipse 70% 55% at 85% 10%, rgba(232,85,106,0.35), transparent 60%),
-        radial-gradient(ellipse 60% 50% at 10% 100%, rgba(224,138,60,0.18), transparent 60%),
-        linear-gradient(150deg, #a01b30 0%, #7d1426 45%, #3a0d17 100%);
+        radial-gradient(ellipse 70% 55% at 85% 10%, rgba(232,85,106,0.22), transparent 62%),
+        radial-gradient(ellipse 60% 50% at 10% 100%, rgba(224,138,60,0.12), transparent 62%),
+        linear-gradient(150deg, #6b1322 0%, #4a0e19 48%, #1f070d 100%);
     border-radius: 14px; padding: 2rem 2.1rem 1.8rem;
     border: 1px solid rgba(255, 196, 206, 0.40);
     box-shadow:
@@ -501,7 +501,7 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
    A flat pink tile with maroon initials read as an empty slot rather than a choice. */
 .photo.placeholder, .profile-photo.placeholder {
     position: relative; overflow: hidden;
-    background: linear-gradient(150deg, #a01b30 0%, #7d1426 45%, #3a0d17 100%);
+    background: linear-gradient(150deg, #6b1322 0%, #4a0e19 48%, #1f070d 100%);
     color: #fff;
 }
 .photo.placeholder .ph-canvas, .profile-photo.placeholder .ph-canvas {
