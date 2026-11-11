@@ -30,15 +30,15 @@
     {
       "slug": "ai-and-computation",
       "title": "AI and computational biology",
-      "blurb": "Deep learning and large-scale biological data to decode how cells communicate during infection, and to model immunity faster than experiments alone allow.",
+      "blurb": "Deep learning and evolutionary data to predict how hosts and pathogens interact, and to inform the design of the next generation of antivirals.",
       "lead": "",
       "detail": [
-        "Deep learning is our main computational tool. We use protein language and structure models to predict how immune proteins interact and to pick out the experiments worth doing, and apply them to comparative genomic and surveillance data."
+        "Deep learning is our main computational tool. We use protein language and structure models alongside the evolutionary record across thousands of vertebrate genomes to predict how immune proteins interact, to ask where those models are blind, and to narrow a vast space of possibilities down to the few worth testing at the bench."
       ],
       "questions": [
-        "Can deep learning predict how immune signalling proteins interact?",
-        "Which parts of an immune protein actually matter?",
-        "How do we spot emerging viruses in surveillance data?"
+        "Can AI inform the design of new antivirals and engineered cytokines?",
+        "Can we predict host-pathogen interactions, and how they will evolve?",
+        "What would an evolution-aware foundation model of immunity look like?"
       ]
     },
     {
