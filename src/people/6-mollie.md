@@ -5,7 +5,7 @@ order: 8
 initials: MN
 photo: "/assets/people/mollie.jpg"
 projectLabel: Project
-projectTitle: "Exploring the relationship between nematodes and viruses, using the pig parasite Ascaris suum as a model organism."
+projectTitle: "VIROWORM: characterising the interplay between viruses, parasitic nematodes and their hosts."
 funders: "Collaborators include Angela Mousley and Martha Betson."
 outside: "Reading and baking."
 sections:
