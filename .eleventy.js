@@ -50,6 +50,7 @@ module.exports = function (eleventyConfig) {
   // Render a frontmatter string as markdown (used by profile-page sections)
   const md = require("markdown-it")({ html: true, linkify: true, typographer: false });
   eleventyConfig.addFilter("markdown", (s) => (s ? md.render(s) : ""));
+  eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
   eleventyConfig.addFilter("monthYear", (d) =>
     new Date(d).toLocaleString("en-GB", { month: "long", year: "numeric" })
   );

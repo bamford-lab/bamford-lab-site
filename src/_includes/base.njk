@@ -11,6 +11,7 @@
     <meta property="og:image" content="{{ site.url }}/assets/og-image.png">
     <meta property="og:url" content="{{ site.url }}/">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon-virus.svg">
     <link rel="alternate icon" href="/assets/favicon-32.png" type="image/png">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -18,6 +19,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/styles.css?v={{ assets.cssVersion }}">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchOrganization",
+      "name": "{{ site.name }}",
+      "alternateName": "Bamford Lab, Queen's University Belfast",
+      "description": "{{ site.name }} studies antiviral immunity at the {{ site.school }}, {{ site.university }}.",
+      "url": "{{ site.url }}/",
+      "logo": "{{ site.url }}/assets/icon-512.png",
+      "email": "{{ site.email }}",
+      "parentOrganization": { "@type": "CollegeOrUniversity", "name": "{{ site.university }}" },
+      "address": { "@type": "PostalAddress", "streetAddress": "19 Chlorine Gardens", "addressLocality": "Belfast", "postalCode": "BT9 5DL", "addressCountry": "GB" },
+      "founder": { "@type": "Person", "name": "Connor Bamford" },
+      "sameAs": ["{{ site.scholar }}"]
+    }
+    </script>
 </head>
 <body>
     <canvas id="bg-canvas" aria-hidden="true"></canvas>

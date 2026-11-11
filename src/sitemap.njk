@@ -1,0 +1,24 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+{#- Profile pages are produced by pagination, and Eleventy only puts the FIRST of a
+    paginated set into collections.all, so they are listed separately from
+    collections.people below. -#}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all %}
+{%- if item.url and item.url != "/admin/" and "person.njk" not in item.inputPath %}
+  <url>
+    <loc>{{ site.url }}{{ item.url }}</loc>
+    <lastmod>{{ item.date | isoDate }}</lastmod>
+  </url>
+{%- endif %}
+{%- endfor %}
+{%- for person in collections.people %}
+  <url>
+    <loc>{{ site.url }}/people/{{ person.data.name | slugify }}/</loc>
+    <lastmod>{{ person.date | isoDate }}</lastmod>
+  </url>
+{%- endfor %}
+</urlset>
