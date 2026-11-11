@@ -34,7 +34,7 @@ permalink: /people/index.html
                    and left the grid ragged. The full bio lives on the profile page. #}
                 <a href="/people/{{ person.data.name | slugify }}/" class="person">
                     <div class="photo">
-                        {% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.name }}">{% else %}<span class="initials">{{ person.data.initials }}</span>{% endif %}
+                        {% if person.data.photo %}<img src="{{ person.data.photo | bust }}" alt="{{ person.data.name }}">{% else %}<span class="initials">{{ person.data.initials }}</span>{% endif %}
                         {# Cards reveal a PROJECT on hover. Connor's `projectLabel` is "Role" and his line
                            is a job title, which "Group Leader" under his name already says, so the
                            overlay is skipped for him. It still shows on his profile page. #}

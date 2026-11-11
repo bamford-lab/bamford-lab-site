@@ -25,6 +25,26 @@ module.exports = function (eleventyConfig) {
   );
 
   // Helpers
+  // Appends a content hash to an asset URL, so a changed photo is never served from
+  // a browser's cache under its old filename. Bitten twice on 11 Nov 2026: an updated
+  // stylesheet and then an updated headshot both looked unchanged until a hard refresh.
+  const { createHash } = require("node:crypto");
+  const { readFileSync, existsSync } = require("node:fs");
+  const { join } = require("node:path");
+  const bustCache = new Map();
+  eleventyConfig.addFilter("bust", (url) => {
+    if (!url || !url.startsWith("/")) return url;
+    if (bustCache.has(url)) return bustCache.get(url);
+    const file = join(__dirname, "src", url);
+    let out = url;
+    if (existsSync(file)) {
+      const h = createHash("sha1").update(readFileSync(file)).digest("hex").slice(0, 8);
+      out = `${url}?v=${h}`;
+    }
+    bustCache.set(url, out);
+    return out;
+  });
+
   eleventyConfig.addFilter("limit", (arr, n) => arr.slice(0, n));
 
   // Render a frontmatter string as markdown (used by profile-page sections)

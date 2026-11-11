@@ -15,7 +15,7 @@ eleventyComputed:
             <a href="/people/" class="back-link">&larr; Back to the team</a>
 
             <div class="profile-head reveal">
-                <div class="profile-photo">{% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.name }}">{% else %}{{ person.data.initials }}{% endif %}</div>
+                <div class="profile-photo">{% if person.data.photo %}<img src="{{ person.data.photo | bust }}" alt="{{ person.data.name }}">{% else %}{{ person.data.initials }}{% endif %}</div>
                 <div>
                     <h1 class="profile-name">{{ person.data.name }}</h1>
                     <div class="profile-role">{{ person.data.role }}</div>
@@ -56,7 +56,7 @@ eleventyComputed:
             <div class="profile-figures">
                 {% for f in person.data.figures %}
                 <figure class="feature reveal">
-                    <img src="{{ f.src }}" alt="{{ f.caption }}">
+                    <img src="{{ f.src | bust }}" alt="{{ f.caption }}">
                     <figcaption>{{ f.caption }}</figcaption>
                 </figure>
                 {% endfor %}
