@@ -33,11 +33,13 @@ permalink: /people/index.html
                    open inline, which made one card enormously taller than its neighbours
                    and left the grid ragged. The full bio lives on the profile page. #}
                 <a href="/people/{{ person.data.name | slugify }}/" class="person">
-                    <div class="photo">{% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.name }}">{% else %}{{ person.data.initials }}{% endif %}</div>
+                    <div class="photo">
+                        {% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.name }}">{% else %}<span class="initials">{{ person.data.initials }}</span>{% endif %}
+                        {% if person.data.projectTitle %}<span class="proj"><b>{{ person.data.projectLabel or "Project" }}</b>{{ person.data.projectTitle }}</span>{% endif %}
+                    </div>
                     <div class="info">
                         <div class="name">{{ person.data.name }}</div>
                         <div class="role">{{ person.data.role }}</div>
-                        {% if person.data.projectTitle %}<div class="proj">{{ person.data.projectTitle }}</div>{% endif %}
                         <span class="person-more">View profile &rarr;</span>
                     </div>
                 </a>
