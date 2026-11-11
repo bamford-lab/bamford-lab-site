@@ -44,15 +44,15 @@
     {
       "slug": "drug-design",
       "title": "Drug design",
-      "blurb": "Turning discoveries about immune defence into new antivirals and strategies to strengthen the body's own response to infection.",
+      "blurb": "Turning what we learn about immune defence into new therapeutics, from antiviral compounds to engineered immune proteins.",
       "lead": "",
       "detail": [
-        "We are working towards new antivirals by two routes: targeting the viral proteins that disarm the immune response, and strengthening the host's own defences. Interferon-lambdas are a particular focus, and we build modified versions to understand what controls their potency."
+        "Understanding a mechanism is only half the story. The other half is using it. We are working towards new therapeutics by two routes: targeting the viral proteins that disarm the immune response, and strengthening the defences the host already has. Engineered cytokines are a particular interest, and building modified versions tells us what controls how they work."
       ],
       "questions": [
-        "Can we drug the viral proteins that suppress interferon?",
-        "How do we boost mucosal defence without damaging inflammation?",
-        "Can we engineer an interferon that outperforms the natural one?"
+        "Can we drug the viral proteins that suppress immune signalling?",
+        "Which host pathways give broad protection across many viruses?",
+        "Can we engineer immune proteins that work better than the natural ones?"
       ]
     }
   ]
