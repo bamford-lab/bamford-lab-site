@@ -6,7 +6,7 @@
        rest simply hold dark values now. */
     --bg: #180a0e;
     --bg-alt: #22151a;
-    --card: #231419;
+    --card: #1d0d14;
     --border: rgba(255, 255, 255, 0.10);
     --border-strong: rgba(255, 255, 255, 0.22);
     --text: #ecdfe0;
@@ -474,7 +474,7 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 /* People grid */
 .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .person {
-    background-image: linear-gradient(170deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018));
+    background-image: linear-gradient(170deg, rgba(236,110,132,0.13), rgba(236,110,132,0.035));
     background-color: var(--card);
     border: 1px solid rgba(255,255,255,0.13);
     border-radius: 14px; overflow: hidden; display: block;
@@ -553,7 +553,7 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 /* News */
 .news-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .news-card {
-    background-image: linear-gradient(170deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018));
+    background-image: linear-gradient(170deg, rgba(236,110,132,0.13), rgba(236,110,132,0.035));
     background-color: var(--card);
     border: 1px solid rgba(255,255,255,0.13);
     border-radius: 14px; padding: 1.6rem;
@@ -659,7 +659,7 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 .join .lead { color: var(--dark-dim); }
 .join .contact-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; margin-top: 2.5rem; }
 .join .contact-card {
-    background-image: linear-gradient(170deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+    background-image: linear-gradient(170deg, rgba(236,110,132,0.14), rgba(236,110,132,0.04));
     border: 1px solid rgba(255,255,255,0.13);
     border-radius: 14px; padding: 1.6rem;
     box-shadow:
@@ -749,7 +749,7 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
 /* Conference talks grid (captioned) */
 .talks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .talks figure {
-    background-image: linear-gradient(170deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018));
+    background-image: linear-gradient(170deg, rgba(236,110,132,0.13), rgba(236,110,132,0.035));
     background-color: var(--card);
     border: 1px solid rgba(255,255,255,0.13); border-radius: 14px; overflow: hidden;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 16px 40px -30px rgba(0,0,0,0.95);
