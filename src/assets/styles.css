@@ -65,12 +65,13 @@ a:hover { color: var(--accent); }
     margin-bottom: 1rem;
 }
 .section .lead {
-    font-size: 1.16rem; color: var(--text-dim); max-width: 620px;
+    font-size: 1.16rem; color: var(--text-dim);
 }
-.section-head { margin-bottom: 3rem; max-width: 720px; }
-/* Opt-out of the reading-width cap, for a lead that should run the full width of the
-   grid beneath it rather than sitting in a narrow column beside empty space. */
-.section-head.section-head-wide, .section-head.section-head-wide .lead { max-width: none; }
+/* Section headings and their leads run the FULL container width. They used to be
+   capped at 720px / 620px, which left every heading in a narrow left-hand column
+   beside empty space while the grid beneath it spanned the page. Changed on
+   11 Nov 2026 after the same complaint on five separate sections. */
+.section-head { margin-bottom: 3rem; }
 
 /* Nav. Scoped to #nav: a bare `nav {}` here would capture any other <nav> on a page. */
 nav#nav {
