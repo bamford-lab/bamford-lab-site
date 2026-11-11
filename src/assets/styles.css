@@ -37,6 +37,10 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.72;
+    /* Sticky footer: on a short page (a sparse profile, for instance) the footer used
+       to stop wherever the content ended, leaving it stranded mid-screen with bare
+       background beneath it. `margin-top: auto` on the footer pushes it to the bottom. */
+    display: flex; flex-direction: column; min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
@@ -531,6 +535,7 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 
 /* Footer */
 footer {
+    margin-top: auto;
     background: var(--dark-2); color: var(--dark-dim);
     padding: 2.5rem 0; font-size: 0.88rem;
     border-top: 1px solid rgba(255,255,255,0.06);
