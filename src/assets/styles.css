@@ -73,7 +73,7 @@ a { color: var(--accent-dark); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--accent); }
 
 .container { max-width: 1320px; margin: 0 auto; padding: 0 1.5rem; }
-.section { padding: 6rem 0; position: relative; }
+.section { padding: 4.25rem 0; position: relative; }
 /* The alternating band is a crimson wash LIFTED off the plum. At the light theme's
    3.5% it was invisible on a dark page.
    It is a GRADIENT, not a flat fill: a flat fill met the next section at a hard ruled
@@ -83,8 +83,8 @@ a:hover { color: var(--accent); }
     background: linear-gradient(
         to bottom,
         rgba(198, 26, 58, 0) 0,
-        rgba(198, 26, 58, 0.10) 140px,
-        rgba(198, 26, 58, 0.10) calc(100% - 140px),
+        rgba(198, 26, 58, 0.10) 105px,
+        rgba(198, 26, 58, 0.10) calc(100% - 105px),
         rgba(198, 26, 58, 0) 100%
     );
 }
@@ -104,7 +104,7 @@ a:hover { color: var(--accent); }
    capped at 720px / 620px, which left every heading in a narrow left-hand column
    beside empty space while the grid beneath it spanned the page. Changed on
    11 Nov 2026 after the same complaint on five separate sections. */
-.section-head { margin-bottom: 3rem; }
+.section-head { margin-bottom: 2.1rem; }
 
 /* Nav. Scoped to #nav: a bare `nav {}` here would capture any other <nav> on a page. */
 nav#nav {
@@ -202,9 +202,9 @@ nav#nav .links a.nav-cta:hover { background: linear-gradient(170deg, #c7253d 0%,
         radial-gradient(ellipse 80% 60% at 70% 20%, rgba(180,31,53,0.28), transparent 60%),
         radial-gradient(ellipse 60% 50% at 15% 90%, rgba(224,138,60,0.12), transparent 60%);
     color: var(--dark-text);
-    min-height: 92vh; display: flex; align-items: center;
+    min-height: 82vh; display: flex; align-items: center;
     position: relative; overflow: hidden;
-    padding: 7rem 0 5rem;
+    padding: 6.5rem 0 3.5rem;
 }
 #hero-canvas { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 /* Fades the hero (background AND particle field) into the page beneath it. Sits at
@@ -271,7 +271,7 @@ nav#nav .links a.nav-cta:hover { background: linear-gradient(170deg, #c7253d 0%,
 .hero .qub-badge { display: inline-block; margin-bottom: 1.8rem; }
 .hero .qub-badge img { height: 30px; width: auto; display: block; opacity: 0.96; }
 .hero .affil {
-    margin-top: 3.5rem; display: flex; gap: 2.5rem; flex-wrap: wrap; align-items: center;
+    margin-top: 2.6rem; display: flex; gap: 2.5rem; flex-wrap: wrap; align-items: center;
     font-size: 0.85rem; color: var(--dark-dim);
     border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.8rem;
 }
@@ -666,8 +666,8 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
         linear-gradient(
             to bottom,
             rgba(255,255,255,0) 0,
-            rgba(255,255,255,0.028) 150px,
-            rgba(255,255,255,0.028) calc(100% - 150px),
+            rgba(255,255,255,0.028) 110px,
+            rgba(255,255,255,0.028) calc(100% - 110px),
             rgba(255,255,255,0) 100%
         );
     color: var(--dark-text);
@@ -787,9 +787,9 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
 .feature figcaption { padding: 1rem 1.3rem; font-size: 0.95rem; color: var(--text-dim); }
 
 /* News archive page */
-.page-head { padding: 8rem 0 2.5rem; }
+.page-head { padding: 7rem 0 2rem; }
 .page-head h1 { font-size: clamp(2.2rem, 5vw, 3rem); color: var(--heading); font-weight: 500; }
-.timeline { padding-bottom: 6rem; max-width: 1100px; }
+.timeline { padding-bottom: 4.5rem; max-width: 1100px; }
 .timeline .item { padding: 2rem 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: 130px 1fr; gap: 2rem; }
 .timeline .item .when {
     font-family: var(--sans); font-size: 0.86rem; font-weight: 600;
@@ -826,7 +826,7 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
     .nav-toggle { display: block; }
 }
 @media (max-width: 620px) {
-    .section { padding: 4rem 0; }
+    .section { padding: 3.2rem 0; }
     .grid-3, .grid-4, .people, .news-list, .alumni-list { grid-template-columns: 1fr; }
     .timeline .item { grid-template-columns: 1fr; gap: 0.4rem; }
     nav#nav .links { display: none; }
