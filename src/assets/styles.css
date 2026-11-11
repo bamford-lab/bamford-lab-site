@@ -127,23 +127,14 @@ nav#nav::before {
 }
 @keyframes strip-drift { from { background-position: 0 0; } to { background-position: -200% 0; } }
 
-/* Reading progress along the foot of the bar. It is the one piece of motion that
-   responds to the reader rather than running on a timer. */
-.nav-progress {
-    position: absolute; left: 0; bottom: 0; height: 3px; width: 0;
-    /* Gold, and deeper at the tail than the head so it still reads against the pale bar.
-       The crimson version was nearly invisible: crimson on off-white at 2px disappears. */
-    background: linear-gradient(90deg, #c87a1c 0%, #e8a33f 45%, #f7cd72 100%);
-    box-shadow: 0 0 12px rgba(233,162,74,0.85), 0 0 3px rgba(200,122,28,0.6);
-    border-radius: 0 2px 2px 0;
-    transition: width 0.12s linear;
-    pointer-events: none; z-index: 2;
-}
-/* Hairline under the bar that fades out at both ends, so it reads as a drawn line
-   rather than a border that stops dead at the window edge. */
+/* A permanent GOLD bar along the foot of the nav. This began as a scroll-progress
+   indicator and James asked for it to be fixed: it is now simply the bar's bottom edge,
+   full width, with a soft amber glow bleeding onto the dark page below. The crimson
+   hairline it replaced is gone; two lines there was one too many. */
 nav#nav::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, rgba(180,31,53,0) 0%, rgba(180,31,53,0.45) 22%, rgba(180,31,53,0.45) 78%, rgba(180,31,53,0) 100%);
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #c87a1c 0%, #e8a33f 28%, #f7cd72 50%, #e8a33f 72%, #c87a1c 100%);
+    box-shadow: 0 0 12px rgba(233,162,74,0.75), 0 0 3px rgba(200,122,28,0.55);
 }
 nav#nav.scrolled {
     background: linear-gradient(to bottom, rgba(255,253,253,0.97), rgba(241,233,233,0.95));
