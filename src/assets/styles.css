@@ -366,6 +366,25 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
     color: var(--accent-dark); font-family: 'Newsreader', serif; font-size: 2.4rem;
 }
 .person .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+/* Placeholder for members with no headshot yet: the lab's own virus mark, large and
+   faint, on the same crimson gradient as the research cards, with white initials.
+   A flat pink tile with maroon initials read as an empty slot rather than a choice. */
+.photo.placeholder, .profile-photo.placeholder {
+    position: relative; overflow: hidden;
+    background: linear-gradient(150deg, #a01b30 0%, #7d1426 45%, #3a0d17 100%);
+    color: #fff;
+}
+.photo.placeholder::before, .profile-photo.placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('/assets/virus-white.svg') no-repeat center / 72%;
+    opacity: 0.22;
+}
+.photo.placeholder .initials, .profile-photo.placeholder {
+    position: relative; z-index: 1;
+}
+.photo.placeholder .initials {
+    font-size: 2.6rem; letter-spacing: 0.06em; text-shadow: 0 2px 14px rgba(24,10,14,0.5);
+}
 /* The project title is an OVERLAY on the photo, revealed on hover, so the card never
    changes height and the grid cannot reflow. Cards show only name and role at rest. */
 .person .photo .proj {
