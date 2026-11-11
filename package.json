@@ -1,0 +1,13 @@
+{
+  "name": "bamford-lab-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website for the Bamford Lab, Queen's University Belfast",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or (site.name + " | " + site.tagline + " | " + site.university) }}</title>
+    <meta name="description" content="{{ description or 'The Bamford Lab at Queen\'s University Belfast studies antiviral immunity and how it is regulated: interferons, innate immunity, respiratory viral infection and pathogen surveillance.' }}">
+    <meta property="og:title" content="{{ site.name }} | {{ site.tagline }}">
+    <meta property="og:description" content="Understanding antiviral immunity and how it is regulated. {{ site.school }}, {{ site.university }}.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ site.url }}/assets/og-image.png">
+    <meta property="og:url" content="{{ site.url }}/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-virus.svg">
+    <link rel="alternate icon" href="/assets/favicon-32.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <nav id="nav">
+        <div class="container">
+            <a href="/" class="brand" aria-label="Bamford Lab">
+                <span class="brand-logo">
+                    <img src="/assets/logo-wordmark-nav.svg" alt="Bamford Lab">
+                    <img src="/assets/logo-wordmark-nav-virus.svg" alt="" class="brand-virus">
+                </span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+            </button>
+            <div class="links" id="navLinks">
+                <a href="/research/" class="nav-link{% if page.url.startsWith('/research/') %} active{% endif %}">Research</a>
+                <a href="/people/" class="nav-link{% if page.url.startsWith('/people/') %} active{% endif %}">People</a>
+                <a href="/news/" class="nav-link{% if page.url.startsWith('/news/') %} active{% endif %}">News</a>
+                <a href="/publications/" class="nav-link{% if page.url.startsWith('/publications/') %} active{% endif %}">Publications</a>
+                <a href="/#find-us" class="nav-link">Find us</a>
+                <a href="/#join" class="nav-cta">Join us</a>
+            </div>
+        </div>
+    </nav>
+
+    {{ content | safe }}
+
+    <footer>
+        <div class="container">
+            <div>
+                <img src="/assets/logo-full-dark.svg" alt="{{ site.name }}, {{ site.tagline }}" class="foot-logo">
+                <div>{{ site.school }}, {{ site.university }}.</div>
+            </div>
+            <div class="foot-links">
+                <a href="/#edi">Equality, diversity and inclusion</a>
+                <a href="/#top">Back to top</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+        const toggle = document.getElementById('navToggle');
+        const links = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => links.classList.toggle('open'));
+        links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Constellation of molecules, cytokine receptors and viruses drifting, linked to each other
+        // and reaching toward the cursor. Built from the lab's own iconography. Drives both the
+        // dark hero and the light full-page background (deep red).
+        function initField(canvas, opt) {
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const C = opt.colors, LINK = opt.link || 130, fixed = opt.fixed;
+            let w, h, parts = [], raf;
+            const mouse = { x: -9999, y: -9999 };
+
+            function size() {
+                if (fixed) { w = window.innerWidth; h = window.innerHeight; }
+                else { const r = canvas.parentElement.getBoundingClientRect(); w = r.width; h = r.height; }
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                canvas.width = w * dpr; canvas.height = h * dpr;
+                canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            function seed() {
+                const count = opt.count || Math.max(30, Math.round(w * h / 22000));
+                parts = [];
+                for (let i = 0; i < count; i++) {
+                    const t = Math.random();
+                    const type = t > 0.92 ? 'virus' : (t > 0.82 ? 'receptor' : 'dot');
+                    parts.push({
+                        x: Math.random() * w, y: Math.random() * h,
+                        vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
+                        type, r: type === 'dot' ? Math.random() * 1.6 + 1 : Math.random() * 2 + 3.2,
+                        a: Math.random() * Math.PI * 2, spin: (Math.random() - 0.5) * 0.008
+                    });
+                }
+            }
+            // A cytokine receptor with its ligand, matching the "L" of the logo: a stalk
+            // opening into a cupped binding pocket with a molecule sitting in it. This
+            // replaced an antibody, which was wrong for a lab that works on innate immunity.
+            function receptor(p) {
+                ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a);
+                ctx.strokeStyle = C.ab; ctx.lineWidth = 1.4; ctx.lineCap = 'round';
+                const s = p.r * 1.5;
+                ctx.beginPath();
+                ctx.moveTo(0, s * 1.7); ctx.lineTo(0, s * 0.1);     // stalk
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(0, 0, s * 0.72, 0, Math.PI);                // cupped binding pocket
+                ctx.stroke();
+                ctx.fillStyle = C.vbody;
+                ctx.beginPath(); ctx.arc(0, -s * 0.18, s * 0.46, 0, Math.PI * 2); ctx.fill();
+                ctx.restore();
+            }
+            function virus(p) {
+                ctx.save(); ctx.translate(p.x, p.y);
+                ctx.strokeStyle = C.spike; ctx.lineWidth = 1;
+                for (let k = 0; k < 8; k++) {
+                    const ang = p.a + k * Math.PI / 4;
+                    ctx.beginPath();
+                    ctx.moveTo(Math.cos(ang) * p.r, Math.sin(ang) * p.r);
+                    ctx.lineTo(Math.cos(ang) * (p.r + 3), Math.sin(ang) * (p.r + 3));
+                    ctx.stroke();
+                }
+                ctx.fillStyle = C.vbody;
+                ctx.beginPath(); ctx.arc(0, 0, p.r, 0, Math.PI * 2); ctx.fill();
+                if (C.core) { ctx.fillStyle = C.core; ctx.beginPath(); ctx.arc(0, 0, p.r * 0.42, 0, Math.PI * 2); ctx.fill(); }
+                ctx.restore();
+            }
+            function frame() {
+                ctx.clearRect(0, 0, w, h);
+                for (let i = 0; i < parts.length; i++) {
+                    const p = parts[i];
+                    for (let j = i + 1; j < parts.length; j++) {
+                        const q = parts[j], dx = p.x - q.x, dy = p.y - q.y, d = Math.hypot(dx, dy);
+                        if (d < LINK) {
+                            ctx.strokeStyle = C.line((1 - d / LINK));
+                            ctx.lineWidth = 0.7;
+                            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+                        }
+                    }
+                    const mx = p.x - mouse.x, my = p.y - mouse.y, md = Math.hypot(mx, my);
+                    if (md < LINK * 1.5) {
+                        ctx.strokeStyle = C.mline((1 - md / (LINK * 1.5)));
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+                    }
+                }
+                for (const p of parts) {
+                    p.x += p.vx; p.y += p.vy; p.a += p.spin;
+                    const mx = p.x - mouse.x, my = p.y - mouse.y, md = Math.hypot(mx, my);
+                    if (md < 90 && md > 0) { const f = (90 - md) / 90 * 0.6; p.x += mx / md * f; p.y += my / md * f; }
+                    if (p.x < -12) p.x = w + 12; if (p.x > w + 12) p.x = -12;
+                    if (p.y < -12) p.y = h + 12; if (p.y > h + 12) p.y = -12;
+                    if (p.type === 'dot') { ctx.fillStyle = C.dot; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill(); }
+                    else if (p.type === 'receptor') receptor(p);
+                    else virus(p);
+                }
+                if (!reduce) raf = requestAnimationFrame(frame);
+            }
+            size(); seed(); frame();
+            window.addEventListener('resize', () => { cancelAnimationFrame(raf); size(); seed(); frame(); });
+            if (fixed) {
+                window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+                window.addEventListener('mouseout', () => { mouse.x = -9999; mouse.y = -9999; });
+            } else {
+                const host = canvas.parentElement;
+                host.addEventListener('mousemove', (e) => { const r = host.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+                host.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+            }
+        }
+
+        // Dark hero: brighter crimson / rose, amber virus cores
+        initField(document.getElementById('hero-canvas'), {
+            count: 66, link: 132,
+            colors: {
+                line: o => 'rgba(180,31,53,' + o * 0.32 + ')',
+                mline: o => 'rgba(232,85,106,' + o * 0.5 + ')',
+                dot: 'rgba(240,120,140,0.85)',
+                ab: 'rgba(232,85,106,0.6)',
+                spike: 'rgba(180,31,53,0.55)',
+                vbody: 'rgba(233,162,74,0.75)',
+                core: null
+            }
+        });
+
+        // Research pillar cards: one small field per card, pale on the crimson gradient
+        document.querySelectorAll('.pillar-canvas').forEach(c => initField(c, {
+            count: 18, link: 120,
+            colors: {
+                line: o => 'rgba(255,255,255,' + o * 0.16 + ')',
+                mline: o => 'rgba(255,214,220,' + o * 0.4 + ')',
+                dot: 'rgba(255,205,212,0.55)',
+                ab: 'rgba(255,205,212,0.45)',
+                spike: 'rgba(255,205,212,0.4)',
+                vbody: 'rgba(233,162,74,0.7)',
+                core: null
+            }
+        }));
+
+        // Light full-page background: subtle deep red
+        initField(document.getElementById('bg-canvas'), {
+            fixed: true, link: 128,
+            colors: {
+                line: o => 'rgba(143,23,40,' + o * 0.16 + ')',
+                mline: o => 'rgba(180,31,53,' + o * 0.28 + ')',
+                dot: 'rgba(180,31,53,0.42)',
+                ab: 'rgba(143,23,40,0.42)',
+                spike: 'rgba(143,23,40,0.42)',
+                vbody: 'rgba(180,31,53,0.30)',
+                core: 'rgba(143,23,40,0.5)'
+            }
+        });
+    </script>
+</body>
+</html>

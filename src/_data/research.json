@@ -1,0 +1,59 @@
+{
+  "pillars": [
+    {
+      "slug": "virology",
+      "title": "Virology",
+      "blurb": "Hands-on molecular virology of the RNA viruses that jump between species: how they infect cells, replicate, and trigger or evade the immune response.",
+      "lead": "",
+      "detail": [
+        "We work on RNA viruses, especially respiratory viruses and the arboviruses spread by mosquitoes, ticks and midges. Using cell lines and primary human airway cultures, we study how these viruses replicate, how cells detect them through interferons, and how viruses evade that response, along with how co-infection and pollution change the picture."
+      ],
+      "questions": [
+        "How do RNA viruses replicate, and how do cells detect them?",
+        "Which viral proteins antagonise interferon, and how?",
+        "How do co-infection and environmental stress change an infection?"
+      ]
+    },
+    {
+      "slug": "evolution",
+      "title": "Evolutionary biology",
+      "blurb": "Reading the evolutionary arms race between hosts and viruses to understand where immunity came from and where it is going.",
+      "lead": "",
+      "detail": [
+        "Antiviral genes are among the fastest evolving in the genome, and comparing them across species pinpoints where hosts and viruses have been pushing against each other. We study how viruses evolve and how immune systems evolve in response, and tracking how viruses adapt to new hosts helps us reason about which might jump next."
+      ],
+      "questions": [
+        "Where did the vertebrate interferon system come from?",
+        "Can evolutionary history help us anticipate the next spillover?"
+      ]
+    },
+    {
+      "slug": "ai-and-computation",
+      "title": "AI and computational biology",
+      "blurb": "Deep learning and large-scale biological data to decode how cells communicate during infection, and to model immunity faster than experiments alone allow.",
+      "lead": "",
+      "detail": [
+        "Deep learning is our main computational tool. We use protein language and structure models to predict how immune proteins interact and to pick out the experiments worth doing, and apply them to comparative genomic and surveillance data."
+      ],
+      "questions": [
+        "Can deep learning predict how immune signalling proteins interact?",
+        "Which parts of an immune protein actually matter?",
+        "How do we spot emerging viruses in surveillance data?"
+      ]
+    },
+    {
+      "slug": "drug-design",
+      "title": "Drug design",
+      "blurb": "Turning discoveries about immune defence into new antivirals and strategies to strengthen the body's own response to infection.",
+      "lead": "",
+      "detail": [
+        "We are working towards new antivirals by two routes: targeting the viral proteins that disarm the immune response, and strengthening the host's own defences. Interferon-lambdas are a particular focus, and we build modified versions to understand what controls their potency."
+      ],
+      "questions": [
+        "Can we drug the viral proteins that suppress interferon?",
+        "How do we boost mucosal defence without damaging inflammation?",
+        "Can we engineer an interferon that outperforms the natural one?"
+      ]
+    }
+  ]
+}

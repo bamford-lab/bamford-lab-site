@@ -1,0 +1,46 @@
+{
+  "papers": [
+    {
+      "year": "2026",
+      "title": "Age-dependent expression and antiviral activity of interferon epsilon in respiratory epithelium.",
+      "authors": "McCabe M, Groves HE, Getty E, Campbell E, Bamford CGG, Courtney DG, Lopez Campos G, Shields MD, Power UF.",
+      "venue": "Journal of Virology. 100(6):e0057825.",
+      "doi": "10.1128/jvi.00578-25"
+    },
+    {
+      "year": "2025",
+      "title": "Preclinical screening platform identifies azatadine-dimaleate as a potent repurposed therapeutic against SARS-CoV-2 infection.",
+      "authors": "Ali A, Courtney D, Broadbent L, Sharma P, Bamford CGG, et al.",
+      "venue": "Journal of Medical Virology. 97(11):e70713.",
+      "doi": "10.1002/jmv.70713"
+    },
+    {
+      "year": "2025",
+      "title": "Combining analysis of individual and wastewater whole genome sequencing improves SARS-CoV-2 surveillance.",
+      "authors": "Troendle EP, Lee AJ, Reyne MI, Allen DM, et al., Bamford CGG, Simpson DA.",
+      "venue": "Water Research. 284:123953.",
+      "doi": "10.1016/j.watres.2025.123953"
+    },
+    {
+      "year": "2025",
+      "title": "ISG15-dependent stabilisation of USP18 is necessary but not sufficient to regulate type I interferon signalling in humans.",
+      "authors": "Vasou A, Nightingale K, Cetkovská V, Scheler J, Bamford CGG, et al., Hughes DJ.",
+      "venue": "European Journal of Immunology. 55(2):e202451651.",
+      "doi": "10.1002/eji.202451651"
+    },
+    {
+      "year": "2024",
+      "title": "SARS-CoV-2 introductions to the island of Ireland: a phylogenetic and geospatiotemporal study of infection dynamics.",
+      "authors": "Rice AM, Troendle EP, Bridgett SJ, et al., Bamford CGG, Skvortsov T, Simpson DA.",
+      "venue": "Genome Medicine. 16(1):150.",
+      "doi": "10.1186/s13073-024-01409-1"
+    },
+    {
+      "year": "2024",
+      "title": "Wastewater monitoring of human and avian influenza A viruses in Northern Ireland: a genomic surveillance study.",
+      "authors": "Lee AJ, Carson S, Reyne MI, et al., McGrath JW, Bamford CGG.",
+      "venue": "The Lancet Microbe. 5(12):100933.",
+      "doi": "10.1016/S2666-5247(24)00175-7"
+    }
+  ]
+}

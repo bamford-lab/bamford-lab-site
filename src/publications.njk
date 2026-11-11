@@ -1,0 +1,37 @@
+---
+layout: base.njk
+title: Publications | Bamford Lab
+description: Papers from the Bamford Lab at Queen's University Belfast on antiviral immunity, emerging viruses and genomic surveillance.
+permalink: /publications/index.html
+---
+
+    <div class="container">
+        <div class="page-head">
+            <h1>Publications</h1>
+        </div>
+
+        {% set years = [] %}
+        {% for p in publications.papers %}{% if p.year not in years %}{% set years = (years.push(p.year), years) %}{% endif %}{% endfor %}
+
+        {% for y in years %}
+        <div class="pub-year">
+            <h2 class="year-head">{{ y }}</h2>
+            <div class="pub-list">
+                {% for p in publications.papers %}{% if p.year == y %}
+                <div class="pub reveal">
+                    <div class="meta">
+                        <div class="title">{{ p.title }}</div>
+                        <div class="authors">{{ p.authors }}</div>
+                        <div class="venue">{{ p.venue }} <a href="https://doi.org/{{ p.doi }}">doi:{{ p.doi }}</a></div>
+                    </div>
+                </div>
+                {% endif %}{% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="cta-group" style="margin:3rem 0 5rem;">
+            <a href="{{ site.scholar }}" class="btn btn-primary">Full list on Google Scholar</a>
+            <a href="/research/" class="btn btn-outline">See the research behind them</a>
+        </div>
+    </div>

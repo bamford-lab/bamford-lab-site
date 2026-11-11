@@ -1,0 +1,157 @@
+---
+layout: base.njk
+title: Bamford Lab | Antiviral Immunity | Queen's University Belfast
+---
+
+    <header class="hero" id="top">
+        <canvas id="hero-canvas"></canvas>
+        <div class="container hero-container">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <h1>Decoding <em>antiviral immunity</em>, emerging viruses and zoonoses, and designing next-generation therapies.</h1>
+                    <p class="sub">At the Bamford Lab we study how humans and animals sense, fight and control viral infection, from the interferons of the innate immune response to the RNA viruses that jump between species and spark new epidemics. Taking a One Health perspective, and drawing on all we learned through the COVID-19 pandemic, we track emerging and zoonotic threats and unite virology, evolution and drug design with deep learning and AI to turn that understanding into new ways to stop disease.</p>
+                    <div class="cta-group">
+                        <a href="/research/" class="btn btn-primary">Explore our research</a>
+                        <a href="#join" class="btn btn-ghost">Join the lab</a>
+                    </div>
+                    <div class="affil">
+                        <img src="/assets/igfs-logo.png" alt="Queen's University Belfast and the Institute for Global Food Security" class="affil-logo">
+                        <img src="/assets/sobs-wordmark-white.png" alt="School of Biological Sciences" class="affil-logo affil-sobs">
+                    </div>
+                </div>
+                <div class="hero-brand">
+                    <img src="/assets/logo-full-dark.svg" alt="Bamford Lab, Antiviral Immunity" class="hero-mark">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- RESEARCH -->
+    <section class="section" id="research">
+        <div class="container">
+            <div class="section-head reveal">
+                <h2>Research</h2>
+                <p class="lead">Antiviral immunity is our central question: how cells and animals sense viral infection, switch on the interferon response, and keep that defence in balance, especially at the mucosal surfaces where infection begins and against the RNA viruses that jump between species. What makes the lab distinctive is that we pursue it from four directions at once.</p>
+            </div>
+            <div class="grid grid-4">
+                {% for r in research.pillars %}
+                <a class="theme-card reveal" href="/research/#{{ r.slug }}">
+                    <h3>{{ r.title | safe }}</h3>
+                    <p>{{ r.blurb }}</p>
+                    <span class="card-more">Read more &rarr;</span>
+                </a>
+                {% endfor %}
+            </div>
+            <a href="/research/" class="btn btn-primary" style="margin-top:2rem;">Explore all our research</a>
+        </div>
+    </section>
+
+    <!-- WHO WE ARE (teaser -> /people/) -->
+    <section class="section section-alt" id="about">
+        <div class="container">
+            <div class="about-split">
+                <div class="about-photo reveal">
+                    <img src="/assets/lab/group-qub.jpg" alt="The Bamford Lab at Queen's University Belfast">
+                </div>
+                <div class="about-copy reveal">
+                    <h2>A multidisciplinary team decoding viruses and immunity</h2>
+                    <p class="lead" style="margin:1rem 0 1.2rem;">Virologists and immunologists working alongside evolutionary and computational biologists, led by Dr Connor Bamford and united on one question: antiviral immunity.</p>
+                    <p style="color:var(--text-dim); margin-bottom:1.8rem;">Eighteen of us, from undergraduate project students through to postdoctoral researchers, sharing a bench, a corridor and a lot of coffee. We care as much about training good scientists as we do about the discoveries themselves.</p>
+                    <a href="/people/" class="btn btn-primary">Meet the lab</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="section" id="news">
+        <div class="container">
+            <div class="section-head reveal">
+                <h2>Lab news</h2>
+                <p class="lead">Grants, papers, conferences, new starters and lab life. The three latest show here; the full history lives on the news page.</p>
+            </div>
+            <div class="news-list">
+                {% for item in collections.news | limit(3) %}
+                <div class="news-card reveal">
+                    <div class="date">{{ item.data.date | monthYear }}</div>
+                    <h3>{{ item.data.title }}</h3>
+                    {{ item.templateContent | safe }}
+                </div>
+                {% endfor %}
+            </div>
+            <a href="/news/" class="btn btn-primary" style="margin-top:2rem;">See all news</a>
+        </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section class="section section-alt" id="publications">
+        <div class="container">
+            <div class="section-head reveal">
+                <h2>Publications</h2>
+            </div>
+            <div class="pub-list">
+                {% for p in publications.papers | limit(4) %}
+                <div class="pub reveal">
+                    <div class="year">{{ p.year }}</div>
+                    <div class="meta">
+                        <div class="title">{{ p.title }}</div>
+                        <div class="authors">{{ p.authors }}</div>
+                        <div class="venue">{{ p.venue }} <a href="https://doi.org/{{ p.doi }}">doi:{{ p.doi }}</a></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="/publications/" class="btn btn-primary" style="margin-top:2rem;">See all publications</a>
+        </div>
+    </section>
+
+    <!-- FIND US -->
+    <section class="section" id="find-us">
+        <div class="container">
+            <div class="place">
+                <div class="reveal">
+                    <h2>Find us in Belfast</h2>
+                    <p style="color:var(--text-dim); margin-top:1rem;">We are based in the {{ site.school }} at {{ site.university }}, one of the UK and Ireland's leading research universities, in the heart of a friendly, affordable and creative city.</p>
+                    <ul class="facts">
+                        <li><b>University</b> <span>{{ site.university }}</span></li>
+                        <li><b>School</b> <span>Biological Sciences</span></li>
+                        <li><b>Institute</b> <span>Global Food Security</span></li>
+                        <li><b>City</b> <span>Belfast, Northern Ireland</span></li>
+                    </ul>
+                </div>
+                <div class="map reveal">
+                    <iframe loading="lazy" title="Queen's University Belfast on the map"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=-5.945%2C54.580%2C-5.925%2C54.588&layer=mapnik&marker=54.5838%2C-5.9350"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include "edi.njk" %}
+
+    <!-- JOIN / CONTACT -->
+    <section class="section join" id="join">
+        <div class="container">
+            <div class="section-head reveal" style="max-width:720px;">
+                <h2>Come and do a PhD, project or postdoc with us</h2>
+                <p class="lead">We welcome curious, motivated people at every stage. If our questions excite you, get in touch, even just to chat about possibilities.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card reveal">
+                    <h3>For prospective students</h3>
+                    <p style="color:var(--dark-dim); font-size:0.95rem;">Opportunities come up at every stage, from undergraduate projects through PhDs to postdoctoral posts. We are always glad to hear from people who have their own funding, or who are looking for help to apply for it. Tell us a little about yourself and what you would like to work on, and we will point you to the routes and the next steps.</p>
+                    <a href="mailto:{{ site.email }}?subject=Joining the Bamford Lab" class="btn btn-primary" style="margin-top:1.2rem;">Email to enquire</a>
+                </div>
+                <div class="contact-card reveal">
+                    <h3>Contact</h3>
+                    <div class="contact-row">Email <a href="mailto:{{ site.email }}">{{ site.email }}</a></div>
+                    <div class="contact-row">Post <span>{{ site.address }}</span></div>
+                    <div class="socials">
+                        {% if site.twitter != "#" %}<a href="{{ site.twitter }}" title="X / Twitter" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.5 8.6L23 22h-6.9l-5.4-7-6.2 7H1.4l8-9.2L1 2h7l4.9 6.4L18.9 2zm-2.4 18h1.9L7.6 4H5.6l10.9 16z"/></svg></a>{% endif %}
+                        {% if site.bluesky != "#" %}<a href="{{ site.bluesky }}" title="Bluesky" aria-label="Bluesky"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8C10.9 8.5 7.9 4.9 5.3 3.6 2.9 2.3 2 2.9 2 5.4c0 1.4.7 6 .9 6.6.6 2 2.6 2.5 4.4 2.2-2.7.4-3.4 2-1.9 3.6 2.9 3 4.1-.8 4.4-1.7l.2-.5.2.5c.3.9 1.5 4.7 4.4 1.7 1.5-1.6.8-3.2-1.9-3.6 1.8.3 3.8-.2 4.4-2.2.2-.6.9-5.2.9-6.6 0-2.5-.9-3.1-3.3-1.8C16 4.9 13 8.5 12 10.8z"/></svg></a>{% endif %}
+                        <a href="{{ site.scholar }}" title="Google Scholar" aria-label="Google Scholar"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.6z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

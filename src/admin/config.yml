@@ -1,0 +1,150 @@
+# ==========================================================================
+# Sveltia CMS configuration for the Bamford Lab website.
+# Lab members edit content at  https://bamfordlab.org/admin/
+#
+# Domain set 11 Nov 2026: bamfordlab.org (Cloudflare Registrar).
+#   backend.repo must match the real GitHub owner/repository.
+#   backend.base_url is the deployed sveltia-cms-auth worker.
+# See DEPLOY.md for the full walkthrough.
+# ==========================================================================
+
+backend:
+  name: github
+  repo: bamford-lab/bamford-lab-site     # <-- EDIT if your GitHub org/repo differs
+  branch: main
+  base_url: https://auth.bamfordlab.org   # the sveltia-cms-auth worker (step 5 of DEPLOY.md)
+
+# Where uploaded images are stored in the repo, and how the site references them
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+# Open the editor straight onto the content (no live-preview pane needed)
+editor:
+  preview: false
+
+collections:
+  # ---------------------------------------------------------------- People
+  - name: people
+    label: People
+    label_singular: Person
+    description: "Lab members. Lower 'Display order' shows first (Connor = 1)."
+    folder: src/people
+    create: true
+    slug: "{{order}}-{{fields.name}}"
+    summary: "{{fields.name}}, {{fields.role}}"
+    sortable_fields: [order, name]
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Role, name: role, widget: string, hint: "e.g. PhD Researcher, Postdoctoral Researcher, Group Leader" }
+      - { label: "Display order (lower shows first)", name: order, widget: number, default: 99, value_type: int }
+      - { label: "Initials (shown only if no photo)", name: initials, widget: string, required: false }
+      - { label: Photo, name: photo, widget: image, required: false, hint: "Square headshot works best" }
+      - { label: "Label for the line below", name: projectLabel, widget: select, options: ["Project", "Role"], default: "Project", required: false }
+      - { label: "Project or role title", name: projectTitle, widget: string, required: false }
+      - { label: "Funder and collaborators", name: funders, widget: text, required: false }
+      - { label: "Outside the lab", name: outside, widget: text, required: false, hint: "Something they do away from the bench" }
+      - { label: "Start date / note", name: start, widget: string, required: false, hint: "e.g. Joined the lab in 2024 (shown on their profile page)" }
+      - label: "External links (profile page)"
+        name: links
+        widget: list
+        required: false
+        summary: "{{fields.label}}"
+        fields:
+          - { label: Label, name: label, widget: string }
+          - { label: URL, name: url, widget: string }
+      - label: "Extra sections (profile page only)"
+        name: sections
+        widget: list
+        required: false
+        summary: "{{fields.heading}}"
+        hint: "Longer detail that would clutter the people-page card. Only shows on the full profile."
+        fields:
+          - { label: Heading, name: heading, widget: string }
+          - { label: Text, name: body, widget: markdown }
+      - label: "Figures / photos (profile page)"
+        name: figures
+        widget: list
+        required: false
+        fields:
+          - { label: Image, name: src, widget: image }
+          - { label: Caption, name: caption, widget: string }
+      - { label: "Alumnus (has left the lab)", name: alumni, widget: boolean, default: false, required: false, hint: "Moves them from the team grid into the Lab alumni list. They keep no profile page." }
+      - { label: "Alumni note", name: note, widget: string, required: false, hint: "Optional, alumni only. e.g. 'Now a PhD student at Glasgow'." }
+      - { label: "Hide from website (draft)", name: draft, widget: boolean, default: false, required: false }
+      - { label: "Bio (around 100 words)", name: body, widget: markdown }
+
+  # ------------------------------------------------------------------ News
+  - name: news
+    label: News
+    label_singular: News item
+    description: "Grants, papers, conferences, new starters, lab life. Newest shows first."
+    folder: src/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date | date('YYYY-MM-DD')}}: {{fields.title}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { label: Tag, name: tag, widget: string, default: "News", hint: "e.g. Grant, Paper, Conference, Lab life" }
+      - { label: "Summary (a sentence or two)", name: body, widget: markdown }
+
+  # ------------------------------------------------------- Research pillars
+  - name: research
+    label: Research
+    description: "The four research pillars. Shown as cards on the home page and in full on /research/."
+    files:
+      - name: pillars
+        label: "Research pillars"
+        file: src/_data/research.json
+        fields:
+          - label: Pillars
+            name: pillars
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: "URL slug", name: slug, widget: string, hint: "Lowercase, hyphens only. Used for the link anchor." }
+              - { label: "Home page card text", name: blurb, widget: text, hint: "One or two sentences." }
+              - { label: "Opening line (research page)", name: lead, widget: text }
+              - { label: "Paragraphs (research page)", name: detail, widget: list, field: { label: Paragraph, name: para, widget: text } }
+              - { label: "Questions we are asking", name: questions, widget: list, field: { label: Question, name: q, widget: string } }
+
+  # -------------------------------------------------------- Publications
+  - name: publications
+    label: Publications
+    description: "Papers, newest first. Grouped by year on the publications page."
+    files:
+      - name: papers
+        label: "Publication list"
+        file: src/_data/publications.json
+        fields:
+          - label: Papers
+            name: papers
+            widget: list
+            summary: "{{fields.year}}: {{fields.title}}"
+            fields:
+              - { label: Year, name: year, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Authors, name: authors, widget: text }
+              - { label: "Journal, volume and pages", name: venue, widget: string }
+              - { label: DOI, name: doi, widget: string, hint: "Just the DOI itself, e.g. 10.1128/jvi.00578-25" }
+
+  # -------------------------------------------------------------- Settings
+  - name: settings
+    label: Settings
+    files:
+      - name: site
+        label: Site details
+        file: src/_data/site.json
+        fields:
+          - { label: "Lab name", name: name, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: "Contact email", name: email, widget: string }
+          - { label: "Postal address", name: address, widget: string }
+          - { label: University, name: university, widget: string }
+          - { label: School, name: school, widget: string }
+          - { label: Institute, name: institute, widget: string }
+          - { label: "Google Scholar URL", name: scholar, widget: string, required: false }
+          - { label: "X / Twitter URL", name: twitter, widget: string, required: false }
+          - { label: "Bluesky URL", name: bluesky, widget: string, required: false }

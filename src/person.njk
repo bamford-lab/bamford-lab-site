@@ -1,0 +1,66 @@
+---
+pagination:
+  data: collections.people
+  size: 1
+  alias: person
+layout: base.njk
+permalink: "/people/{{ person.data.name | slugify }}/"
+eleventyComputed:
+  title: "{{ person.data.name }} | Bamford Lab"
+  description: "{{ person.data.name }}, {{ person.data.role }} in the Bamford Lab, Queen's University Belfast."
+---
+
+    <section class="section" style="padding-top:8rem;">
+        <div class="container" style="max-width:820px;">
+            <a href="/people/" class="back-link">&larr; Back to the team</a>
+
+            <div class="profile-head reveal">
+                <div class="profile-photo">{% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.name }}">{% else %}{{ person.data.initials }}{% endif %}</div>
+                <div>
+                    <h1 class="profile-name">{{ person.data.name }}</h1>
+                    <div class="profile-role">{{ person.data.role }}</div>
+                    {% if person.data.start %}<div class="profile-start">{{ person.data.start }}</div>{% endif %}
+                </div>
+            </div>
+
+            <div class="profile-body reveal">{{ person.templateContent | safe }}</div>
+
+            {% if person.data.projectTitle %}
+            <p class="project-block reveal"><b>{{ person.data.projectLabel or "Project" }}:</b> {{ person.data.projectTitle }}
+                {% if person.data.funders %}<span>{{ person.data.funders }}</span>{% endif %}
+            </p>
+            {% endif %}
+
+            {% if person.data.sections %}
+            <div class="profile-sections">
+                {% for s in person.data.sections %}
+                <section class="profile-section reveal">
+                    <h2>{{ s.heading }}</h2>
+                    {{ s.body | markdown | safe }}
+                </section>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if person.data.outside and person.data.outside != "to follow." %}
+            <p class="profile-outside reveal"><b>Outside the lab:</b> {{ person.data.outside }}</p>
+            {% endif %}
+
+            {% if person.data.links %}
+            <div class="profile-links reveal">
+                {% for l in person.data.links %}<a href="{{ l.url }}" class="btn btn-primary">{{ l.label }}</a>{% endfor %}
+            </div>
+            {% endif %}
+
+            {% if person.data.figures %}
+            <div class="profile-figures">
+                {% for f in person.data.figures %}
+                <figure class="feature reveal">
+                    <img src="{{ f.src }}" alt="{{ f.caption }}">
+                    <figcaption>{{ f.caption }}</figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </section>

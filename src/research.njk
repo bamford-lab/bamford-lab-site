@@ -1,0 +1,71 @@
+---
+layout: base.njk
+title: Research | Bamford Lab
+description: How the Bamford Lab studies antiviral immunity, across virology, evolution, drug design and AI.
+permalink: /research/index.html
+---
+
+    <div class="container">
+        <div class="page-head research-head">
+            <div class="research-masthead">
+                <h1>Research</h1>
+                <p class="lead">Antiviral immunity is our central question: how cells and animals sense viral infection, switch on the interferon response and keep it in balance. We pursue it from four directions at once.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" id="pillars" style="padding-top:1rem;">
+        <div class="container">
+            <div class="pillar-stack">
+                {% for r in research.pillars %}
+                <article class="pillar-card reveal" id="{{ r.slug }}">
+                    <canvas class="pillar-canvas" aria-hidden="true"></canvas>
+                    <div class="pillar-card-head">
+                        <h2>{{ r.title | safe }}</h2>
+                        {% if r.lead %}<p class="pillar-lead">{{ r.lead }}</p>{% endif %}
+                    </div>
+                    <div class="pillar-body-grid">
+                        <div class="pillar-text">
+                            {% for para in r.detail %}
+                            <p>{{ para }}</p>
+                            {% endfor %}
+                        </div>
+                        <aside class="pillar-questions">
+                            <h3>Questions we are asking</h3>
+                            <ul>
+                                {% for q in r.questions %}
+                                <li>{{ q }}</li>
+                                {% endfor %}
+                            </ul>
+                        </aside>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT FITS TOGETHER -->
+    <section class="section section-alt" id="together">
+        <div class="container">
+            <div class="section-head reveal" style="max-width:760px;">
+                <h2>How it fits together</h2>
+            </div>
+            <div class="together-grid">
+                <div class="reveal">
+                    <p>A typical project runs through several of these: an evolutionary signal points to a protein interface, virology tests what it does in a real infection, computation predicts which changes matter, and the best findings become targets worth designing against.</p>
+                    <p>Across all four runs a One Health view spanning wildlife, livestock and people, shaped by the COVID-19 pandemic, when members of the lab helped build Northern Ireland's genomic surveillance of the virus.</p>
+                </div>
+                <div class="reveal">
+                    <div class="together-cta">
+                        <h3>Want to see it in practice?</h3>
+                        <p>The people page shows who is working on what, and the publications page has the papers.</p>
+                        <div class="cta-group">
+                            <a href="/people/" class="btn btn-primary">Meet the people</a>
+                            <a href="/publications/" class="btn btn-outline">Read the papers</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: News | Bamford Lab
+description: News from the Bamford Lab at Queen's University Belfast.
+permalink: /news/index.html
+---
+
+    <div class="container">
+        <div class="page-head">
+            <h1>Lab news</h1>
+        </div>
+        <div class="timeline">
+            {% for item in collections.news %}
+            <div class="item">
+                <div class="when">{{ item.data.date | monthYear }}</div>
+                <div>
+                    <h3>{{ item.data.title }}</h3>
+                    {{ item.templateContent | safe }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
