@@ -130,9 +130,11 @@ nav#nav::before {
 /* Reading progress along the foot of the bar. It is the one piece of motion that
    responds to the reader rather than running on a timer. */
 .nav-progress {
-    position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
-    background: linear-gradient(90deg, var(--accent-dark), var(--accent) 55%, var(--coral));
-    box-shadow: 0 0 10px rgba(224,138,60,0.55);
+    position: absolute; left: 0; bottom: 0; height: 3px; width: 0;
+    /* Gold, and deeper at the tail than the head so it still reads against the pale bar.
+       The crimson version was nearly invisible: crimson on off-white at 2px disappears. */
+    background: linear-gradient(90deg, #c87a1c 0%, #e8a33f 45%, #f7cd72 100%);
+    box-shadow: 0 0 12px rgba(233,162,74,0.85), 0 0 3px rgba(200,122,28,0.6);
     border-radius: 0 2px 2px 0;
     transition: width 0.12s linear;
     pointer-events: none; z-index: 2;
