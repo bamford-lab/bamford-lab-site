@@ -1,7 +1,7 @@
 ---
 name: Run Zhang
 role: BSc Project Student
-order: 18
+order: 19
 initials: RZ
 photo: "/assets/people/run.jpg"
 projectLabel: Project

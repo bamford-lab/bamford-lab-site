@@ -1,7 +1,7 @@
 ---
 name: Evinka Pasaribu
 role: BSc Project Student
-order: 17
+order: 18
 initials: EP
 photo: "/assets/people/evinka.jpg"
 projectLabel: Project

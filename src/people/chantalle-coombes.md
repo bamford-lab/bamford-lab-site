@@ -1,7 +1,7 @@
 ---
 name: Chantalle Coombes
 role: BSc Project Student
-order: 16
+order: 17
 initials: CC
 photo: ""
 projectLabel: Project
