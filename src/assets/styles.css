@@ -246,15 +246,15 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 
 /* Research page: editorial masthead + contained pillar cards */
 .research-head { padding-bottom: 2.4rem; border-bottom: 1px solid var(--border); }
-.research-masthead {
-    display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-    gap: clamp(2rem, 5vw, 4rem); align-items: start;
-}
+/* Stacked, not two columns. The lead was cut to two sentences on 11 Nov 2026, which
+   left the old right-hand column a small block of text floating beside a mostly empty
+   left one. Title, then lead beneath at the width of the cards below it. */
+.research-masthead { display: block; }
 .research-masthead h1 {
     margin: 0; font-size: clamp(2.4rem, 5.5vw, 3.7rem);
     line-height: 1.02; letter-spacing: -0.025em;
 }
-.research-masthead .lead { margin: 0.5rem 0 0; max-width: 58ch; }
+.research-masthead .lead { margin: 1.1rem 0 0; max-width: none; font-size: 1.2rem; }
 
 /* Four pillars as a compact 2x2 grid. Each card: title, one paragraph, then the
    questions BELOW (not in a side column, which left a large void beside short text).
@@ -604,8 +604,6 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
     .alumni-list { grid-template-columns: repeat(2, 1fr); }
     .labbio, .place { grid-template-columns: 1fr; }
     .about-split { grid-template-columns: 1fr; gap: 2.5rem; }
-    .research-masthead { grid-template-columns: 1fr; gap: 1.2rem; }
-    .research-masthead .lead { margin-top: 0; }
     .pillar-stack { grid-template-columns: 1fr; }
     .join .contact-grid { grid-template-columns: 1fr; }
     .labbio .portrait { max-width: 320px; }
