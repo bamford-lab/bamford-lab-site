@@ -35,7 +35,10 @@ permalink: /people/index.html
                 <a href="/people/{{ person.data.name | slugify }}/" class="person">
                     <div class="photo">
                         {% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.name }}">{% else %}<span class="initials">{{ person.data.initials }}</span>{% endif %}
-                        {% if person.data.projectTitle %}<span class="proj"><b>{{ person.data.projectLabel or "Project" }}</b>{{ person.data.projectTitle }}</span>{% endif %}
+                        {# Cards reveal a PROJECT on hover. Connor's `projectLabel` is "Role" and his line
+                           is a job title, which "Group Leader" under his name already says, so the
+                           overlay is skipped for him. It still shows on his profile page. #}
+                        {% if person.data.projectTitle and person.data.projectLabel != "Role" %}<span class="proj"><b>Project</b>{{ person.data.projectTitle }}</span>{% endif %}
                     </div>
                     <div class="info">
                         <div class="name">{{ person.data.name }}</div>
