@@ -6,7 +6,7 @@
        rest simply hold dark values now. */
     --bg: #180a0e;
     --bg-alt: #22151a;
-    --card: #1d0d14;
+    --card: #1e0f1b;
     --border: rgba(255, 255, 255, 0.10);
     --border-strong: rgba(255, 255, 255, 0.22);
     --text: #ecdfe0;
@@ -474,7 +474,7 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 /* People grid */
 .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .person {
-    background-image: linear-gradient(170deg, rgba(236,110,132,0.13), rgba(236,110,132,0.035));
+    background-image: linear-gradient(170deg, rgba(226,96,146,0.12), rgba(226,96,146,0.03));
     background-color: var(--card);
     border: 1px solid rgba(255,255,255,0.13);
     border-radius: 14px; overflow: hidden; display: block;
@@ -553,7 +553,7 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 /* News */
 .news-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .news-card {
-    background-image: linear-gradient(170deg, rgba(236,110,132,0.13), rgba(236,110,132,0.035));
+    background-image: linear-gradient(170deg, rgba(226,96,146,0.12), rgba(226,96,146,0.03));
     background-color: var(--card);
     border: 1px solid rgba(255,255,255,0.13);
     border-radius: 14px; padding: 1.6rem;
@@ -570,8 +570,8 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
         0 22px 48px -26px rgba(180,31,53,0.55);
 }
 .news-card .date {
-    font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
-    color: var(--coral); letter-spacing: 0.09em;
+    font-family: var(--sans); font-size: 0.84rem; font-weight: 600;
+    color: var(--coral); letter-spacing: 0.015em;
     font-variant-numeric: tabular-nums; font-feature-settings: "tnum";
     margin-bottom: 0.15rem;
 }
@@ -594,8 +594,8 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
     display: grid; grid-template-columns: 70px 1fr; gap: 1.5rem; align-items: baseline;
 }
 .pub .year {
-    font-family: var(--mono); font-size: 0.88rem; font-weight: 500;
-    color: var(--coral); letter-spacing: 0.06em; padding-top: 0.3rem;
+    font-family: var(--sans); font-size: 0.92rem; font-weight: 600;
+    color: var(--coral); letter-spacing: 0.01em; padding-top: 0.25rem;
     font-variant-numeric: tabular-nums; font-feature-settings: "tnum";
 }
 .pub .meta .title { font-weight: 600; color: var(--heading); }
@@ -636,9 +636,9 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 .place .facts { list-style: none; margin-top: 1.5rem; }
 .place .facts li { padding: 0.6rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.8rem; }
 .place .facts li b {
-    font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
-    letter-spacing: 0.09em; color: var(--coral);
-    min-width: 110px; padding-top: 0.4em;
+    font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.01em; color: var(--coral);
+    min-width: 110px; padding-top: 0.22em;
 }
 
 /* Join / Contact (dark) */
@@ -659,7 +659,7 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 .join .lead { color: var(--dark-dim); }
 .join .contact-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; margin-top: 2.5rem; }
 .join .contact-card {
-    background-image: linear-gradient(170deg, rgba(236,110,132,0.14), rgba(236,110,132,0.04));
+    background-image: linear-gradient(170deg, rgba(226,96,146,0.13), rgba(226,96,146,0.035));
     border: 1px solid rgba(255,255,255,0.13);
     border-radius: 14px; padding: 1.6rem;
     box-shadow:
@@ -669,9 +669,9 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 .join .contact-card h3 { color: #fff; font-size: 1.1rem; margin-bottom: 0.8rem; }
 .join .contact-row { display: flex; gap: 0.9rem; padding: 0.5rem 0; color: var(--dark-dim); font-size: 0.99rem; }
 .join .contact-row b {
-    font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
-    letter-spacing: 0.09em; color: var(--coral);
-    flex: 0 0 48px; padding-top: 0.35em;
+    font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.01em; color: var(--coral);
+    flex: 0 0 52px; padding-top: 0.2em;
 }
 .join .contact-row a { color: var(--dark-text); }
 .join .contact-row a:hover { color: var(--accent); }
@@ -714,8 +714,8 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
 .profile-name { font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--heading); font-weight: 500; line-height: 1.1; }
 .profile-role { color: var(--accent-dark); font-weight: 600; margin-top: 0.3rem; }
 .profile-start {
-    font-family: var(--mono); color: var(--coral); font-size: 0.78rem;
-    letter-spacing: 0.08em; margin-top: 0.5rem;
+    font-family: var(--sans); color: var(--coral); font-size: 0.86rem;
+    font-weight: 500; letter-spacing: 0.01em; margin-top: 0.45rem;
     font-variant-numeric: tabular-nums; font-feature-settings: "tnum";
 }
 .profile-body { color: var(--text-dim); font-size: 1.09rem; }
@@ -749,7 +749,7 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
 /* Conference talks grid (captioned) */
 .talks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .talks figure {
-    background-image: linear-gradient(170deg, rgba(236,110,132,0.13), rgba(236,110,132,0.035));
+    background-image: linear-gradient(170deg, rgba(226,96,146,0.12), rgba(226,96,146,0.03));
     background-color: var(--card);
     border: 1px solid rgba(255,255,255,0.13); border-radius: 14px; overflow: hidden;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 16px 40px -30px rgba(0,0,0,0.95);
@@ -775,8 +775,8 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
 .timeline { padding-bottom: 6rem; max-width: 1100px; }
 .timeline .item { padding: 2rem 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: 130px 1fr; gap: 2rem; }
 .timeline .item .when {
-    font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
-    color: var(--coral); letter-spacing: 0.09em; padding-top: 0.45rem;
+    font-family: var(--sans); font-size: 0.86rem; font-weight: 600;
+    color: var(--coral); letter-spacing: 0.015em; padding-top: 0.4rem;
     font-variant-numeric: tabular-nums; font-feature-settings: "tnum";
 }
 .timeline .item h3 { font-size: 1.3rem; color: var(--heading); margin-bottom: 0.5rem; font-weight: 600; }
