@@ -314,9 +314,13 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 /* How it fits together. The right-hand CTA card was removed on 11 Nov 2026: it only
    repeated the People and Publications links that sit in the nav on every page, and
    existed mainly to fill the second column. */
-.together-copy { max-width: 70ch; }
-.together-copy p { color: var(--text-dim); line-height: 1.82; margin-bottom: 1.15rem; }
-.together-copy p:last-child { margin-bottom: 0; }
+/* Two paragraphs side by side: fills the width of the pillar grid above without
+   stretching either one to an unreadable line length. */
+.together-copy {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 4vw, 3.5rem); align-items: start;
+}
+.together-copy p { color: var(--text-dim); line-height: 1.82; margin: 0; }
 
 /* Publications page (grouped by year) */
 .pub-year { margin-bottom: 2.5rem; }
@@ -594,6 +598,7 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
 
 /* Responsive */
 @media (max-width: 900px) {
+    .together-copy { grid-template-columns: 1fr; gap: 1.6rem; }
     .hero .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .hero .hero-brand { order: -1; justify-content: flex-start; }
     .hero .hero-mark { max-width: 520px; }
