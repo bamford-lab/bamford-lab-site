@@ -155,8 +155,10 @@ nav#nav .links a.nav-cta:hover {
 .hero .container { position: relative; z-index: 2; }
 .hero .hero-container { max-width: 1400px; width: 100%; }
 .hero .hero-grid {
-    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(2.5rem, 5vw, 5rem); align-items: center;
+    /* The text side gets the larger share. At an even split the headline broke across
+       five lines and the column grew so tall that the wordmark floated in a void. */
+    display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+    gap: clamp(2.5rem, 4vw, 4rem); align-items: center;
 }
 .hero .hero-brand { display: flex; justify-content: center; }
 .hero .hero-mark {
@@ -175,11 +177,13 @@ nav#nav .links a.nav-cta:hover {
 .hero h1 {
     font-size: clamp(2.1rem, 4.6vw, 3.5rem); font-weight: 500;
     line-height: 1.12; letter-spacing: -0.015em; color: #fff;
-    max-width: 24ch; margin-bottom: 1.6rem;
+    /* `next\2011generation` in the markup uses a NON-BREAKING hyphen so the compound
+       never splits across two lines. */
+    max-width: 30ch; margin-bottom: 1.6rem; text-wrap: balance;
 }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero .sub {
-    font-size: 1.14rem; color: var(--dark-dim); max-width: 680px;
+    font-size: 1.14rem; color: var(--dark-dim); max-width: 64ch;
     font-weight: 300; margin-bottom: 2.4rem; line-height: 1.75;
 }
 .hero .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
