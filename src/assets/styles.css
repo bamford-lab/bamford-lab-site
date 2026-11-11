@@ -62,7 +62,7 @@ nav#nav .links a, .btn, .card-more, .expand, .profile-link, .back-link,
 a { color: var(--accent-dark); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--accent); }
 
-.container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+.container { max-width: 1320px; margin: 0 auto; padding: 0 1.5rem; }
 .section { padding: 6rem 0; position: relative; }
 .section-alt { background: rgba(143, 23, 40, 0.035); }
 
@@ -362,7 +362,7 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
     padding-bottom: 0.6rem; border-bottom: 2px solid var(--accent-soft); margin-bottom: 0.5rem;
 }
 .pub-year .pub { grid-template-columns: 1fr; gap: 0; }
-.pub-year .pub-list { max-width: 900px; }
+.pub-year .pub-list { max-width: none; }
 
 /* Lab alumni */
 .alumni h2 { margin-bottom: 0.5rem; }
@@ -480,7 +480,9 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 }
 
 /* Publications */
-.pub-list { display: flex; flex-direction: column; gap: 0; max-width: 900px; }
+/* No width cap: paper titles are long and were wrapping to two lines with half the
+   page empty beside them. */
+.pub-list { display: flex; flex-direction: column; gap: 0; }
 .pub {
     padding: 1.3rem 0; border-bottom: 1px solid var(--border);
     display: grid; grid-template-columns: 70px 1fr; gap: 1.5rem; align-items: baseline;
@@ -619,7 +621,7 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
 /* News archive page */
 .page-head { padding: 8rem 0 2.5rem; }
 .page-head h1 { font-size: clamp(2.2rem, 5vw, 3rem); color: var(--heading); font-weight: 500; }
-.timeline { padding-bottom: 6rem; max-width: 840px; }
+.timeline { padding-bottom: 6rem; max-width: 1100px; }
 .timeline .item { padding: 2rem 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: 130px 1fr; gap: 2rem; }
 .timeline .item .when { font-family: var(--mono); font-size: 0.82rem; color: var(--accent-dark); font-weight: 500; padding-top: 0.35rem; }
 .timeline .item h3 { font-size: 1.3rem; color: var(--heading); margin-bottom: 0.5rem; font-weight: 600; }
