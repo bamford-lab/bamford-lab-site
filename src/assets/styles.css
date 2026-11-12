@@ -39,7 +39,15 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 112px; }
+/* The second half of the fluid layout. Every size in this file is in rem, so scaling the
+   ROOT scales type, padding, gaps and card internals together, in proportion, with one
+   number. It is flat 16px up to a 1600px window (so phones and laptops are untouched)
+   and rises to 18.5px by about 2300px. Do NOT convert rules to px: that is what would
+   break this. The nav's own height is in px and deliberately does not grow. */
+html {
+    font-size: clamp(16px, 10.29px + 0.357vw, 18.5px);
+    scroll-behavior: smooth; scroll-padding-top: 112px;
+}
 
 body {
     font-family: 'Literata', Georgia, 'Times New Roman', serif;
@@ -72,7 +80,14 @@ nav#nav .links a, .btn, .card-more, .expand, .profile-link, .back-link,
 a { color: var(--accent-dark); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--accent); }
 
-.container { max-width: 1320px; margin: 0 auto; padding: 0 1.5rem; }
+/* THE LAYOUT IS FLUID ABOVE 1600px (James, 12 Nov 2026: on a full-screen 2000px window
+   the page "looks almost as if its meant to be observed on a half window"). Two levers do
+   all of it, deliberately, instead of a clamp on every rule:
+     1. this container cap, and
+     2. the fluid root font-size below, which carries every rem-based size with it.
+   The clamp's LOWER bound is the old fixed 1320px, so nothing at or below a 1500px
+   window changes at all: phones and laptops render exactly as they did. */
+.container { width: 100%; max-width: clamp(1320px, 88vw, 1680px); margin: 0 auto; padding: 0 1.5rem; }
 .section { padding: 4.25rem 0; position: relative; }
 /* The alternating band is a crimson wash LIFTED off the plum. At the light theme's
    3.5% it was invisible on a dark page.
@@ -227,7 +242,7 @@ nav#nav .links a.nav-cta:hover { background: linear-gradient(170deg, #c7253d 0%,
     background: linear-gradient(to bottom, rgba(31,8,13,0), var(--bg));
 }
 .hero .container { position: relative; z-index: 2; }
-.hero .hero-container { max-width: 1400px; width: 100%; }
+.hero .hero-container { max-width: clamp(1400px, 92vw, 1800px); width: 100%; }
 .hero .hero-grid {
     /* The text side gets the larger share. At an even split the headline broke across
        five lines and the column grew so tall that the wordmark floated in a void. */
