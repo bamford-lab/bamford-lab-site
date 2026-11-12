@@ -230,7 +230,10 @@ nav#nav .links a.nav-cta:hover { background: linear-gradient(170deg, #c7253d 0%,
     color: var(--dark-text);
     min-height: 82vh; display: flex; align-items: center;
     position: relative; overflow: hidden;
-    padding: 6.5rem 0 3.5rem;
+    /* The TOP padding has to clear the 92px fixed nav before it is doing any work at all,
+       so it is set fluid: at the old flat 6.5rem the headline sat barely 12px under the
+       gold bar on a wide screen (James, 12 Nov 2026). Phones keep roughly what they had. */
+    padding: clamp(7rem, 5.3rem + 3.2vw, 9rem) 0 3.5rem;
 }
 #hero-canvas { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 /* Fades the hero (background AND particle field) into the page beneath it. Sits at
