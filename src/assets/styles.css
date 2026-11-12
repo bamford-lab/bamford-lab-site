@@ -13,6 +13,10 @@
     --text-dim: #b199a0;
     --heading: #ffffff;
     /* Dark hero / footer (warm plum-black) */
+    /* The clearance under the FIXED 92px nav, shared by the hero and every page head.
+       It has to clear the bar before it buys any visible space, so it is fluid: at a flat
+       7rem the first line of text sat ~20px under the gold bar on a wide screen. */
+    --page-top: clamp(7rem, 5.3rem + 3.2vw, 9rem);
     --dark: #1f080d;
     --dark-2: #2e1217;
     --dark-text: #ecdfe0;
@@ -230,10 +234,7 @@ nav#nav .links a.nav-cta:hover { background: linear-gradient(170deg, #c7253d 0%,
     color: var(--dark-text);
     min-height: 82vh; display: flex; align-items: center;
     position: relative; overflow: hidden;
-    /* The TOP padding has to clear the 92px fixed nav before it is doing any work at all,
-       so it is set fluid: at the old flat 6.5rem the headline sat barely 12px under the
-       gold bar on a wide screen (James, 12 Nov 2026). Phones keep roughly what they had. */
-    padding: clamp(7rem, 5.3rem + 3.2vw, 9rem) 0 3.5rem;
+    padding: var(--page-top) 0 3.5rem;
 }
 #hero-canvas { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 /* Fades the hero (background AND particle field) into the page beneath it. Sits at
@@ -829,7 +830,10 @@ footer .foot-logo { height: 68px; width: auto; display: block; margin-bottom: 0.
 .feature figcaption { padding: 1rem 1.3rem; font-size: 0.95rem; color: var(--text-dim); }
 
 /* News archive page */
-.page-head { padding: 7rem 0 2rem; }
+.page-head { padding: var(--page-top) 0 2rem; }
+/* For a page whose first block is a plain .section rather than a .page-head (the people
+   page, the profiles). Was an inline padding-top:7rem on each of them. */
+.section-top { padding-top: var(--page-top); }
 .page-head h1 { font-size: clamp(2.2rem, 5vw, 3rem); color: var(--heading); font-weight: 500; }
 .timeline { padding-bottom: 4.5rem; max-width: 1100px; }
 .timeline .item { padding: 2rem 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: 130px 1fr; gap: 2rem; }
