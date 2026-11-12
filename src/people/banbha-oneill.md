@@ -6,7 +6,7 @@ initials: BO
 photo: "/assets/people/banbha.jpg"
 projectLabel: Project
 projectTitle: "Surveillance and characterisation of tick-borne viruses in sheep and deer in Northern Ireland."
-funders: "Funded by DAERA. Working closely with collaborators in the mammalian virology department at AFBI."
+funders: "Funded by DAERA."
 outside: "Seeing live music, learning Irish, and making art through cross stitch."
 figures:
   - src: "/assets/people/banbha-tick.jpg"

@@ -6,7 +6,7 @@ initials: MN
 photo: "/assets/people/mollie.jpg"
 projectLabel: Project
 projectTitle: "VIROWORM: characterising the interplay between viruses, parasitic nematodes and their hosts."
-funders: "Collaborators include Angela Mousley and Martha Betson."
+funders: ""
 outside: "Reading and baking."
 sections:
   - heading: "The PhD: nematodes and viruses"

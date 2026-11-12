@@ -6,7 +6,7 @@ initials: JG
 photo: "/assets/people/jiaying.jpg"
 projectLabel: Project
 projectTitle: "Environmental Health and Infectious Disease: How Chemical Cocktails Help Drive Emerging Zoonoses in Mammals."
-funders: "Funded by the OneZoo Centre for Doctoral Training through UKRI. Collaborators: Cardiff University, University of Nottingham, Public Health Wales and the UK Animal and Plant Health Agency (APHA)."
+funders: "Funded by the OneZoo Centre for Doctoral Training through UKRI."
 outside: "foraging for mushrooms (though she cannot identify any of them), growing flowers (which rarely survive her care), and making dumplings, fortunately with much better results."
 figures:
   - src: "/assets/people/jiaying-fieldwork.jpg"

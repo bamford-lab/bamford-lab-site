@@ -6,7 +6,7 @@ initials: AC
 photo: "/assets/people/aaron.jpg"
 projectLabel: Project
 projectTitle: "Genomic characterisation of full-length and deletion-containing influenza A viruses in environmental samples."
-funders: "OneZoo Centre for Doctoral Training. Collaborators include Andrew Lee, Deirdre Gilpin, Ken Lemon and John McGrath."
+funders: "OneZoo Centre for Doctoral Training."
 outside: "to follow."
 draft: false
 ---
