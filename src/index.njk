@@ -71,6 +71,7 @@ title: Bamford Lab | Antiviral Immunity | Queen's University Belfast
             <div class="news-list">
                 {% for item in collections.news | limit(3) %}
                 <div class="news-card reveal">
+                    <canvas class="pillar-canvas" aria-hidden="true"></canvas>
                     <div class="date">{{ item.data.date | monthYear }}</div>
                     <h3>{{ item.data.title }}</h3>
                     {{ item.templateContent | safe }}

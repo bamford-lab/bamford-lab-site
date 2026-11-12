@@ -330,11 +330,11 @@ a.theme-card { display: flex; flex-direction: column; text-decoration: none; }
 .theme-card > :not(.pillar-canvas) { position: relative; z-index: 1; }
 /* The particle field sits back at rest and sharpens on hover, so a card the cursor is
    on reads as the active one. */
-.theme-card .pillar-canvas, .pillar-card .pillar-canvas {
+.theme-card .pillar-canvas, .pillar-card .pillar-canvas, .news-card .pillar-canvas {
     opacity: 0.55; filter: blur(1.1px);
     transition: opacity 0.35s ease, filter 0.35s ease;
 }
-.theme-card:hover .pillar-canvas, .pillar-card:hover .pillar-canvas {
+.theme-card:hover .pillar-canvas, .pillar-card:hover .pillar-canvas, .news-card:hover .pillar-canvas {
     opacity: 1; filter: none;
 }
 a.theme-card p { flex: 1; }
@@ -580,22 +580,31 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
 
 /* News */
 .news-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+/* The news boxes share the RESEARCH CARD construction exactly (James, 12 Nov 2026):
+   same crimson-to-plum gradient, same rose outline, same highlight and halo. They were
+   the neutral panel recipe and read as a different component beside the pillars. */
 .news-card {
-    background-image: linear-gradient(170deg, rgba(235,88,118,0.11), rgba(235,88,118,0.028));
-    background-color: var(--card);
-    border: 1px solid rgba(255,255,255,0.13);
+    background-image:
+        radial-gradient(ellipse 70% 55% at 85% 10%, rgba(232,85,106,0.22), transparent 62%),
+        radial-gradient(ellipse 60% 50% at 10% 100%, rgba(224,138,60,0.12), transparent 62%),
+        linear-gradient(150deg, #6b1322 0%, #4a0e19 48%, #1f070d 100%);
+    border: 1px solid rgba(255,196,206,0.40); color: #fff;
     border-radius: 14px; padding: 1.6rem;
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.10),
-        0 16px 40px -30px rgba(0,0,0,0.95);
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        0 0 0 1px rgba(0,0,0,0.35),
+        0 18px 44px -26px rgba(180,31,53,0.75);
     transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
 }
+.news-card > :not(.pillar-canvas) { position: relative; z-index: 1; }
 .news-card:hover {
-    border-color: rgba(239,127,147,0.5); transform: translateY(-3px);
+    border-color: rgba(233,162,74,0.75); transform: translateY(-3px);
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.16),
-        0 22px 48px -26px rgba(180,31,53,0.55);
+        inset 0 1px 0 rgba(255,255,255,0.3),
+        0 0 0 1px rgba(0,0,0,0.35),
+        0 26px 54px -24px rgba(180,31,53,0.95);
 }
 .news-card .date {
     font-family: var(--sans); font-size: 0.84rem; font-weight: 600;
@@ -603,8 +612,12 @@ a.theme-card:hover .card-more { opacity: 1; transform: none; }
     font-variant-numeric: tabular-nums; font-feature-settings: "tnum";
     margin-bottom: 0.15rem;
 }
-.news-card h3 { font-size: 1.12rem; font-weight: 600; color: var(--heading); margin: 0.5rem 0 0.6rem; line-height: 1.3; }
-.news-card p { font-size: 0.97rem; color: var(--text-dim); }
+.news-card h3 { font-size: 1.12rem; font-weight: 600; color: #fff; margin: 0.5rem 0 0.6rem; line-height: 1.3; }
+/* Dimmed body ink goes muddy on the crimson, so the copy sits on white at 88% and the
+   inline links go AMBER: rose reads as "a slightly different red" against this card. */
+.news-card p { font-size: 0.97rem; color: rgba(255,255,255,0.88); }
+.news-card a { color: var(--coral); text-decoration-color: rgba(224,138,60,0.5); }
+.news-card a:hover { color: #f7cd72; }
 .news-card .tag {
     align-self: flex-start; margin-top: 1rem;
     font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
